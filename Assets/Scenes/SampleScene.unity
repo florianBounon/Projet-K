@@ -1075,6 +1075,7 @@ GameObject:
   - component: {fileID: 2036108322}
   - component: {fileID: 2036108326}
   m_Layer: 0
+  m_Name: Capsule
   m_Name: tic tac
   m_TagString: Untagged
   m_Icon: {fileID: 0}
