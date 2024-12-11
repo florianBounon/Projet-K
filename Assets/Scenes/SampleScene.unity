@@ -196,13 +196,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df4ef8f96b5b4ff4e85de7b5a5b3851c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  jetforce: 10
-  jet: 0
   droite: right
   gauche: left
   jump: up
-  horizontal: 0
+  speed: 5
+  jetforce: 10
+  dashforce: 0
+  dashtime: 0
   rb: {fileID: 230611733}
 --- !u!50 &230611733
 Rigidbody2D:
@@ -1037,7 +1037,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1168,13 +1168,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df4ef8f96b5b4ff4e85de7b5a5b3851c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  jetforce: 10
-  jet: 0
   droite: d
   gauche: a
   jump: w
-  horizontal: 0
+  speed: 5
+  jetforce: 50
+  dashforce: 50
+  dashtime: 1
   rb: {fileID: 2036108322}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
