@@ -197,8 +197,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  jetforce: 10
+  jet: 0
   droite: right
   gauche: left
+  jump: up
   horizontal: 0
   rb: {fileID: 230611733}
 --- !u!50 &230611733
@@ -808,8 +811,8 @@ Transform:
   m_GameObject: {fileID: 890940551}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.06, y: -6.01, z: 0}
-  m_LocalScale: {x: 22.685825, y: 7.281305, z: 1}
+  m_LocalPosition: {x: 0, y: -6.01, z: 0}
+  m_LocalScale: {x: 23.727734, y: 7.281305, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1166,8 +1169,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  jetforce: 10
+  jet: 0
   droite: d
   gauche: a
+  jump: w
   horizontal: 0
   rb: {fileID: 2036108322}
 --- !u!1660057539 &9223372036854775807
