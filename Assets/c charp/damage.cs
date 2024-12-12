@@ -2,11 +2,14 @@ using UnityEngine;
 
 public class damage : MonoBehaviour
 {
-    [SerializeField] private int enemymask;
+
+    [SerializeField] private string enemytag;
+    [SerializeField] private int deg;
+    [SerializeField] private BoxCollider2D hitbox;
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.layer == enemymask){
-            other.gameObject.GetComponent<health>().takedmg(10);
-            Debug.Log("ntm");
+        Debug.Log(gameObject.tag);
+        if (other.gameObject.tag == enemytag){
+            other.gameObject.GetComponent<health>().takedmg(deg);
         }
     }
 }
