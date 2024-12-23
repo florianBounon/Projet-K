@@ -19,7 +19,7 @@ public class test : MonoBehaviour {
     private float lastPressTimedroite = -Mathf.Infinity; 
     private float lastPressTimegauche = -Mathf.Infinity; 
     private float lastdash = -Mathf.Infinity; 
-    private float doublePressTime = 0.2f;
+    private float doublePressTime = 0.5f;
     private float jet = 0f;
     private float dash = 0f;
     private float horizontal = 0f;
