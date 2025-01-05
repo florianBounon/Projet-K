@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 880967fb6c491ad4dad499bfa357f683
+guid: 90c673ee9f49af140ade99176ee7f404
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1950519312073165831
-    second: Kman(1)_0
+      213: 6361540323800706682
+    second: Kman idle_0
   - first:
-      213: 1260950513837319378
-    second: Kman(1)_1
+      213: 5624299362325948175
+    second: Kman idle_1
   - first:
-      213: -2490488435692320319
-    second: Kman(1)_2
+      213: -5822723196761607719
+    second: Kman idle_2
   - first:
-      213: -2864053562087707658
-    second: Kman(1)_3
+      213: 6287744099713501252
+    second: Kman idle_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,7 +109,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Kman(1)_0
+      name: Kman idle_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 70c09a3eaf2a11b10800000000000000
-      internalID: 1950519312073165831
+      spriteID: a7ee678383bb84850800000000000000
+      internalID: 6361540323800706682
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kman(1)_1
+      name: Kman idle_1
       rect:
         serializedVersion: 2
         x: 128
@@ -146,14 +146,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2d4ae90cfcbcf7110800000000000000
-      internalID: 1260950513837319378
+      spriteID: f07e4e1a8768d0e40800000000000000
+      internalID: 5624299362325948175
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kman(1)_2
+      name: Kman idle_2
       rect:
         serializedVersion: 2
         x: 0
@@ -168,14 +168,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1c9475186f1007dd0800000000000000
-      internalID: -2490488435692320319
+      spriteID: 9d1f8974a18813fa0800000000000000
+      internalID: -5822723196761607719
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kman(1)_3
+      name: Kman idle_3
       rect:
         serializedVersion: 2
         x: 128
@@ -190,8 +190,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6fbe11ea576d048d0800000000000000
-      internalID: -2864053562087707658
+      spriteID: 4484bfdd1fd824750800000000000000
+      internalID: 6287744099713501252
       vertices: []
       indices: 
       edges: []
@@ -200,7 +200,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 6c8695fd5433d8e45a2adab5a9dc35d1
+    spriteID: 8c850e08015b8564fb91c10372724ce0
     internalID: 0
     vertices: []
     indices: 
@@ -210,10 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Kman(1)_0: 1950519312073165831
-      Kman(1)_1: 1260950513837319378
-      Kman(1)_2: -2490488435692320319
-      Kman(1)_3: -2864053562087707658
+      Kman idle_0: 6361540323800706682
+      Kman idle_1: 5624299362325948175
+      Kman idle_2: -5822723196761607719
+      Kman idle_3: 6287744099713501252
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

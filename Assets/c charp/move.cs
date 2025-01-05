@@ -35,15 +35,16 @@ public class test : MonoBehaviour {
         isgrounded = Physics2D.OverlapCircle(groundcheck.position, groundcheckradius, collisionlayers);
 
 
-        if (Input.GetKey(droite))
+        if (Input.GetKey(droite) && isgrounded)
         {
            horizontal = 1f;
         }
-        else if (Input.GetKey(gauche))
+        else if (Input.GetKey(gauche) && isgrounded)
         {
             horizontal = -1f;
         }
-        else {horizontal = 0f;
+        else if (isgrounded)
+        {horizontal = 0f;
         }
 
 
