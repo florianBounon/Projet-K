@@ -14,37 +14,73 @@ public class test : MonoBehaviour {
     [SerializeField] private float dashforce;
     [SerializeField] private float dashtime;
     [SerializeField] private float groundcheckradius;
+    [SerializeField] private Transform enemyposition;
 
 
     private float lastPressTimedroite = -Mathf.Infinity; 
     private float lastPressTimegauche = -Mathf.Infinity; 
     private float lastdash = -Mathf.Infinity; 
     private float doublePressTime = 0.5f;
-    private float jet = 0f;
     private float dash = 0f;
     private float horizontal = 0f;
     private bool isjump = false;
     private bool isdash = false;
+    public bool isbackward = false;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundcheck;
     [SerializeField] private LayerMask collisionlayers;
+    private bool facingleft = false;
+    Animator anim;
 
+    private void Start() {
+        anim = GetComponent<Animator> ();
+    }
+    private void LateUpdate() {
+        if (transform.position.x <= enemyposition.position.x && isgrounded){
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            facingleft = false;
+        }
+        else if (isgrounded){
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+            facingleft = true;
+        }
+    }
     void Update()
     {
+
         isgrounded = Physics2D.OverlapCircle(groundcheck.position, groundcheckradius, collisionlayers);
 
-
-        if (Input.GetKey(droite) && isgrounded)
+        if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name != "idle"){
+            horizontal = 0f;
+        }
+        else if (Input.GetKey(droite) && isgrounded)
         {
+            if (facingleft){
+                isbackward = true;
+            }
+            else{
+                isbackward = false;
+            }
            horizontal = 1f;
         }
         else if (Input.GetKey(gauche) && isgrounded)
         {
+            if (!facingleft){
+                isbackward = true;
+            }
+            else{
+                isbackward = false;
+            }
             horizontal = -1f;
         }
         else if (isgrounded)
-        {horizontal = 0f;
+        {
+            horizontal = 0f;
+            isbackward = false;
+        }
+        else{
+            isbackward = false;
         }
 
 
@@ -53,7 +89,6 @@ public class test : MonoBehaviour {
         if (Input.GetKeyDown(jump)){
             isjump = true;
         }
-        else{jet=0;}
 
         if (Input.GetKeyDown(droite)){
             if (Time.time - lastPressTimedroite <= doublePressTime && dash == 0){
