@@ -41,7 +41,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0
   m_TransitionOffset: 0
-  m_ExitTime: 0.75
+  m_ExitTime: 0
   m_HasExitTime: 0
   m_HasFixedDuration: 0
   m_InterruptionSource: 0
@@ -107,6 +107,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 483dbd631a2cd8d48a9ea798d182f600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  comboscaling: 0
+  framesleft: 0
+  ishitstun: 0
 --- !u!1102 &-5737609941571302199
 AnimatorState:
   serializedVersion: 6
@@ -119,8 +122,7 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -8103819205962176845}
-  m_StateMachineBehaviours:
-  - {fileID: -6360839232491887508}
+  m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1

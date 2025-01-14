@@ -1058,7 +1058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1225,7 +1225,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1613869003677152759, guid: 023f7e9acdf698042827c470df004556, type: 3}
       propertyPath: hitstunframes
-      value: 120
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3032689907647477371, guid: 023f7e9acdf698042827c470df004556, type: 3}
       propertyPath: EnemyPlayerNumber
@@ -1356,6 +1356,10 @@ PrefabInstance:
     - target: {fileID: 1613869003677152759, guid: 023f7e9acdf698042827c470df004556, type: 3}
       propertyPath: enemytag
       value: Player2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613869003677152759, guid: 023f7e9acdf698042827c470df004556, type: 3}
+      propertyPath: hitstunframes
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 1719242741954663153, guid: 023f7e9acdf698042827c470df004556, type: 3}
       propertyPath: m_Layer

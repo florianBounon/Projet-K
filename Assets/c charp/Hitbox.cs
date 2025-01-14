@@ -16,6 +16,7 @@ public class Hitbox : MonoBehaviour
                 other.transform.root.GetComponent<health>().takedmg(deg);
                 other.transform.root.GetComponent<Animator>().SetTrigger("ishit");
                 other.transform.root.GetComponent<hitstun>().basehitstun = hitstunframes;
+                other.transform.root.GetComponent<hitstun>().hitbyattack = true;
             }
         }
     }
