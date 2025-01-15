@@ -171,7 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemytag: Player1
   deg: 10
-  hitstunframes: 20
+  hitstunframes: 50
   hitbox: {fileID: 4377953118818674585}
 --- !u!1 &1743701234878091770
 GameObject:
@@ -436,6 +436,7 @@ MonoBehaviour:
   droite: ;
   gauche: k
   jump: o
+  crouch: 
   speed: 10
   jetforce: 20
   jumpforce: 900
@@ -477,6 +478,7 @@ MonoBehaviour:
   vie: 100
   CharaName: K-Man
   EnemyPlayerNumber: 
+  healthbar: {fileID: 0}
 --- !u!114 &2912133967304665813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,7 +493,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   comboscaling: 0
   basehitstun: 0
-  framesleft: 0
+  ishitstun: 0
+  hitbyattack: 0
 --- !u!1 &5223600919026942800
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Hitbox : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class Hitbox : MonoBehaviour
                 other.transform.root.GetComponent<Animator>().SetTrigger("ishit");
                 other.transform.root.GetComponent<hitstun>().basehitstun = hitstunframes;
                 other.transform.root.GetComponent<hitstun>().hitbyattack = true;
+                other.transform.root.GetComponent<health>().healthbar.value = other.transform.root.GetComponent<health>().vie;
             }
         }
     }

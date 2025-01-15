@@ -6,9 +6,10 @@ using UnityEngine.UI;
 
 public class health : MonoBehaviour
 {
-    [SerializeField] private int vie = 100;
+    [SerializeField] public int vie = 100;
     [SerializeField] private string CharaName;
     [SerializeField] private string EnemyPlayerNumber;
+    [SerializeField] public Slider healthbar;
     Animator anim;
     private GameObject epicwin;
     

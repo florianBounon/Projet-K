@@ -6,6 +6,7 @@ public class test : MonoBehaviour {
     [SerializeField] private string droite ;
     [SerializeField] private string gauche ;
     [SerializeField] private string jump ;
+    [SerializeField] private string crouch ;
     private bool isgrounded;
 
     [SerializeField] private float speed  ;
@@ -86,9 +87,13 @@ public class test : MonoBehaviour {
 
 
 
-        if (Input.GetKeyDown(jump)){
+        if (Input.GetKeyDown(jump) && anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "idle"){
             isjump = true;
         }
+        if (Input.GetKeyDown(crouch)){
+            anim.SetBool("iscrouching",true);
+        }
+        
 
         if (Input.GetKeyDown(droite)){
             if (Time.time - lastPressTimedroite <= doublePressTime && dash == 0){
