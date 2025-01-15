@@ -20,7 +20,9 @@ public class hitstun : MonoBehaviour
             ishitstun=true;
             hitbyattack=false;
             framesleft = basehitstun-comboscaling;
-            comboscaling+=4; 
+            comboscaling+=4;
+            StopAllCoroutines();
+            StartCoroutine(endofhitstun());
         }
         if (ishitstun){
             if (framesleft <= 0){
@@ -29,13 +31,14 @@ public class hitstun : MonoBehaviour
                 anim.SetTrigger("endhitstun");
             }
             //StartCoroutine(endofhitstun());
-            Debug.Log(framesleft);
-            framesleft--;
+            //Debug.Log(framesleft);
+            //framesleft--;
         }
     }
 
     private IEnumerator endofhitstun(){
-        yield return null ;
-        framesleft -=1;
+        Debug.Log(framesleft/60f);
+        yield return new WaitForSeconds(framesleft/60f) ;
+        framesleft =0;
     }
 }

@@ -7,6 +7,7 @@ public class test : MonoBehaviour {
     [SerializeField] private string gauche ;
     [SerializeField] private string jump ;
     [SerializeField] private string crouch ;
+    [SerializeField] private string attackkey;
     private bool isgrounded;
 
     [SerializeField] private float speed  ;
@@ -27,6 +28,7 @@ public class test : MonoBehaviour {
     private bool isjump = false;
     private bool isdash = false;
     public bool isbackward = false;
+    public bool hitagain = false;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundcheck;
@@ -38,11 +40,11 @@ public class test : MonoBehaviour {
         anim = GetComponent<Animator> ();
     }
     private void LateUpdate() {
-        if (transform.position.x <= enemyposition.position.x && isgrounded){
+        if (transform.position.x <= enemyposition.position.x){
             transform.rotation = Quaternion.Euler(0, 0, 0);
             facingleft = false;
         }
-        else if (isgrounded){
+        else{
             transform.rotation = Quaternion.Euler(0, 180, 0);
             facingleft = true;
         }
@@ -59,21 +61,25 @@ public class test : MonoBehaviour {
         {
             if (facingleft){
                 isbackward = true;
+                horizontal = 0.25f;
             }
             else{
                 isbackward = false;
+                horizontal = 0.8f;
             }
-           horizontal = 1f;
+           
         }
         else if (Input.GetKey(gauche) && isgrounded)
         {
             if (!facingleft){
                 isbackward = true;
+                horizontal = -0.25f;
             }
             else{
                 isbackward = false;
+                horizontal = -0.8f;
             }
-            horizontal = -1f;
+            
         }
         else if (isgrounded)
         {
@@ -90,8 +96,15 @@ public class test : MonoBehaviour {
         if (Input.GetKeyDown(jump) && anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "idle"){
             isjump = true;
         }
-        if (Input.GetKeyDown(crouch)){
+        if (Input.GetKey(crouch)){
             anim.SetBool("iscrouching",true);
+        }
+        if (Input.GetKeyUp(crouch)){
+            anim.SetBool("iscrouching",false);
+        }
+        if (Input.GetKeyDown(attackkey)){
+            hitagain = true;
+            anim.SetTrigger("attack");
         }
         
 
@@ -133,10 +146,4 @@ public class test : MonoBehaviour {
         }
 
     }
-
-    private void OnDrawGizmos() {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(groundcheck.position, groundcheckradius);
-    }    
-
 }
