@@ -3,9 +3,9 @@ using UnityEngine;
 public class test : MonoBehaviour {
     [Header("Attributes")]
 
-    [SerializeField] private string droite ;
-    [SerializeField] private string gauche ;
-    [SerializeField] private string jump ;
+    [SerializeField] public string droite;
+    [SerializeField] public string gauche;
+    [SerializeField] public string jump;
     private bool isgrounded;
 
     [SerializeField] private float speed  ;

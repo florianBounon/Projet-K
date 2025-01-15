@@ -3,7 +3,7 @@ using UnityEngine;
 public class animationplayer : MonoBehaviour
 {
     Animator anim;
-    [SerializeField] private string attackkey;
+    [SerializeField] public string attackkey;
     void Start()
     {
         anim = GetComponent<Animator> ();
