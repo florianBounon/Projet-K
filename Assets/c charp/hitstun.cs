@@ -9,9 +9,11 @@ public class hitstun : MonoBehaviour
     private int framesleft;
     public bool ishitstun = false;
     public bool hitbyattack = false;
+    public float Timer;
     void Start()
     {
         anim = GetComponent<Animator> ();
+        Timer = 0.0f;
     }
 
     void Update()
@@ -21,14 +23,17 @@ public class hitstun : MonoBehaviour
             hitbyattack=false;
             framesleft = basehitstun-comboscaling;
             comboscaling+=4;
-            StopAllCoroutines();
-            StartCoroutine(endofhitstun());
+            Timer = framesleft/60.0f;
+            //StopAllCoroutines();
+            //StartCoroutine(endofhitstun());
         }
         if (ishitstun){
-            if (framesleft <= 0){
-                ishitstun=false;
+            Timer -= Time.deltaTime;
+            //if (framesleft <= 0){
+            if (Timer <= 0.0f){
                 comboscaling=0;
                 anim.SetTrigger("endhitstun");
+                ishitstun=false;
             }
             //StartCoroutine(endofhitstun());
             //Debug.Log(framesleft);
@@ -39,6 +44,7 @@ public class hitstun : MonoBehaviour
     private IEnumerator endofhitstun(){
         Debug.Log(framesleft/60f);
         yield return new WaitForSeconds(framesleft/60f) ;
+        Debug.Log("CHIER");
         framesleft =0;
     }
 }

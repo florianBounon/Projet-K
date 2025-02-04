@@ -29,7 +29,7 @@ public class health : MonoBehaviour
     public void takedmg(int degats){
         vie-=degats;
 
-        if (vie==0){
+        if (vie<=0){
             GetComponent<test>().enabled = false;
             gameObject.layer = LayerMask.NameToLayer("deadguy");
             transform.Find("Hurtboxes").gameObject.SetActive(false);

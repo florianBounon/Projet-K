@@ -171,7 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemytag: Player1
   deg: 10
-  hitstunframes: 50
+  hitstunframes: 25
   hitlagsec: 0.2
   hitbox: {fileID: 4377953118818674585}
 --- !u!1 &1743701234878091770
@@ -204,6 +204,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3194466612216541994}
+  - {fileID: 629977134146880670}
   m_Father: {fileID: 6836092449316829877}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2586201900807733517
@@ -239,6 +240,102 @@ Transform:
   - {fileID: 7293184561244159159}
   m_Father: {fileID: 6836092449316829877}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3059214018383557766
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 629977134146880670}
+  - component: {fileID: 3430882286135505331}
+  - component: {fileID: 182429662267322228}
+  m_Layer: 7
+  m_Name: KickHitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &629977134146880670
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3059214018383557766}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3522984504700046554}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &3430882286135505331
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3059214018383557766}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.88699996, y: 0.43919992}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.7143683, y: 0.9135822}
+  m_EdgeRadius: 0
+--- !u!114 &182429662267322228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3059214018383557766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91b15186b0c9a0a479a2db09c5be10ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemytag: Player1
+  deg: 25
+  hitstunframes: 40
+  hitlagsec: 0.3
+  hitbox: {fileID: 3430882286135505331}
 --- !u!1 &4247096899244911837
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,6 +535,7 @@ MonoBehaviour:
   jump: o
   crouch: 
   attackkey: 
+  kickkey: 
   speed: 10
   jetforce: 20
   jumpforce: 900
@@ -446,6 +544,7 @@ MonoBehaviour:
   groundcheckradius: 0.5
   enemyposition: {fileID: 0}
   isbackward: 0
+  hitagain: 0
   rb: {fileID: 3414619723561652533}
   groundcheck: {fileID: 4697766156882892513}
   collisionlayers:

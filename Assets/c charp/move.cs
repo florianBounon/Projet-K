@@ -8,6 +8,7 @@ public class test : MonoBehaviour {
     [SerializeField] private string jump ;
     [SerializeField] private string crouch ;
     [SerializeField] private string attackkey;
+    [SerializeField] private string kickkey;
     private bool isgrounded;
 
     [SerializeField] private float speed  ;
@@ -33,7 +34,7 @@ public class test : MonoBehaviour {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundcheck;
     [SerializeField] private LayerMask collisionlayers;
-    private bool facingleft = false;
+    public bool facingleft = false;
     Animator anim;
 
     private void Start() {
@@ -102,9 +103,14 @@ public class test : MonoBehaviour {
         if (Input.GetKeyUp(crouch)){
             anim.SetBool("iscrouching",false);
         }
+
         if (Input.GetKeyDown(attackkey)){
             hitagain = true;
             anim.SetTrigger("attack");
+        }
+        if (Input.GetKeyDown(kickkey)){
+            hitagain = true;
+            anim.SetTrigger("kick");
         }
         
 
