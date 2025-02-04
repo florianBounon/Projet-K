@@ -333,7 +333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemytag: Player1
   deg: 25
-  hitstunframes: 40
+  hitstunframes: 30
   hitlagsec: 0.3
   hitbox: {fileID: 3430882286135505331}
 --- !u!1 &4247096899244911837
@@ -550,6 +550,7 @@ MonoBehaviour:
   collisionlayers:
     serializedVersion: 2
     m_Bits: 1
+  facingleft: 0
 --- !u!114 &3032689907647477371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -582,6 +583,7 @@ MonoBehaviour:
   basehitstun: 0
   ishitstun: 0
   hitbyattack: 0
+  Timer: 0
 --- !u!1 &5223600919026942800
 GameObject:
   m_ObjectHideFlags: 0
