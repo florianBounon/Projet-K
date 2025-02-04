@@ -14,7 +14,6 @@ public class animationplayer : MonoBehaviour
     {
         if (Input.GetKeyDown(attackkey)){
             anim.SetTrigger("attack");
-
         }
     }
 }

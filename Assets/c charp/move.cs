@@ -3,9 +3,12 @@ using UnityEngine;
 public class test : MonoBehaviour {
     [Header("Attributes")]
 
-    [SerializeField] public string droite;
-    [SerializeField] public string gauche;
-    [SerializeField] public string jump;
+    [SerializeField] public string droite ;
+    [SerializeField] public string gauche ;
+    [SerializeField] public string jump ;
+    [SerializeField] public string crouch ;
+    [SerializeField] public string attackkey;
+    [SerializeField] public string kickkey;
     private bool isgrounded;
 
     [SerializeField] private float speed  ;
@@ -14,46 +17,102 @@ public class test : MonoBehaviour {
     [SerializeField] private float dashforce;
     [SerializeField] private float dashtime;
     [SerializeField] private float groundcheckradius;
+    [SerializeField] private Transform enemyposition;
 
 
     private float lastPressTimedroite = -Mathf.Infinity; 
     private float lastPressTimegauche = -Mathf.Infinity; 
     private float lastdash = -Mathf.Infinity; 
     private float doublePressTime = 0.5f;
-    private float jet = 0f;
     private float dash = 0f;
     private float horizontal = 0f;
     private bool isjump = false;
     private bool isdash = false;
+    public bool isbackward = false;
+    public bool hitagain = false;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundcheck;
     [SerializeField] private LayerMask collisionlayers;
+    public bool facingleft = false;
+    Animator anim;
 
+    private void Start() {
+        anim = GetComponent<Animator> ();
+    }
+    private void LateUpdate() {
+        if (transform.position.x <= enemyposition.position.x){
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            facingleft = false;
+        }
+        else{
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+            facingleft = true;
+        }
+    }
     void Update()
     {
+
         isgrounded = Physics2D.OverlapCircle(groundcheck.position, groundcheckradius, collisionlayers);
 
-
-        if (Input.GetKey(droite) && isgrounded)
+        if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name != "idle"){
+            horizontal = 0f;
+        }
+        else if (Input.GetKey(droite) && isgrounded)
         {
-           horizontal = 1f;
+            if (facingleft){
+                isbackward = true;
+                horizontal = 0.25f;
+            }
+            else{
+                isbackward = false;
+                horizontal = 0.8f;
+            }
+           
         }
         else if (Input.GetKey(gauche) && isgrounded)
         {
-            horizontal = -1f;
+            if (!facingleft){
+                isbackward = true;
+                horizontal = -0.25f;
+            }
+            else{
+                isbackward = false;
+                horizontal = -0.8f;
+            }
+            
         }
         else if (isgrounded)
-        {horizontal = 0f;
+        {
+            horizontal = 0f;
+            isbackward = false;
+        }
+        else{
+            isbackward = false;
         }
 
 
 
 
-        if (Input.GetKeyDown(jump)){
+        if (Input.GetKeyDown(jump) && anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "idle"){
             isjump = true;
         }
-        else{jet=0;}
+        if (Input.GetKey(crouch)){
+            anim.SetBool("iscrouching",true);
+        }
+        if (Input.GetKeyUp(crouch)){
+            anim.SetBool("iscrouching",false);
+        }
+
+        if (Input.GetKeyDown(attackkey)){
+            hitagain = true;
+            anim.SetTrigger("attack");
+        }
+        if (Input.GetKeyDown(kickkey)){
+            hitagain = true;
+            anim.SetTrigger("kick");
+        }
+        
 
         if (Input.GetKeyDown(droite)){
             if (Time.time - lastPressTimedroite <= doublePressTime && dash == 0){
@@ -93,10 +152,4 @@ public class test : MonoBehaviour {
         }
 
     }
-
-    private void OnDrawGizmos() {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(groundcheck.position, groundcheckradius);
-    }    
-
 }

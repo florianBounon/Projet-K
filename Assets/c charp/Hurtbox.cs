@@ -4,19 +4,17 @@ using UnityEngine;
 using UnityEngine.Scripting.APIUpdating;
 using UnityEngine.UI;
 
-public class health : MonoBehaviour
+public class Hurtbox : MonoBehaviour
 {
-    [SerializeField] public int vie = 100;
+    [SerializeField] private int vie = 100;
     [SerializeField] private string CharaName;
-    [SerializeField] private string EnemyPlayerNumber;
-    [SerializeField] public Slider healthbar;
     Animator anim;
     private GameObject epicwin;
     
     void Start()
     {
         epicwin = GameObject.FindWithTag("epicwin");
-        anim = GetComponent<Animator> ();
+        anim = transform.parent.GetComponent<Animator> ();
     }
 
     private void Update() {
@@ -29,14 +27,13 @@ public class health : MonoBehaviour
     public void takedmg(int degats){
         vie-=degats;
 
-        if (vie<=0){
-            GetComponent<test>().enabled = false;
-            gameObject.layer = LayerMask.NameToLayer("deadguy");
-            transform.Find("Hurtboxes").gameObject.SetActive(false);
+        if (vie==0){
+            gameObject.transform.parent.GetComponent<test>().enabled = false;
+            gameObject.transform.parent.gameObject.layer = LayerMask.NameToLayer("deadguy");
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
             anim.SetBool("isdying",true);
-            gameObject.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0,0);;
             epicwin.GetComponent<TMP_Text>().enabled=true;
-            epicwin.GetComponent<TMP_Text>().text="Victoire " + CharaName + "<br>" + EnemyPlayerNumber;
+            epicwin.GetComponent<TMP_Text>().text="Victoire " + CharaName + "<br>" + "Player 1";
         }
     }
 }
