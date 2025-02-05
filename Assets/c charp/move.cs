@@ -9,7 +9,8 @@ public class test : MonoBehaviour {
     [SerializeField] private string crouch ;
     [SerializeField] private string attackkey;
     [SerializeField] private string kickkey;
-    private bool isgrounded;
+    public bool isgrounded;
+    
 
     [SerializeField] private float speed  ;
     [SerializeField] private float jetforce  ;
@@ -18,6 +19,7 @@ public class test : MonoBehaviour {
     [SerializeField] private float dashtime;
     [SerializeField] private float groundcheckradius;
     [SerializeField] private Transform enemyposition;
+
 
 
     private float lastPressTimedroite = -Mathf.Infinity; 
@@ -51,12 +53,58 @@ public class test : MonoBehaviour {
         }
     }
     void Update()
-    {
-
+    {   
         isgrounded = Physics2D.OverlapCircle(groundcheck.position, groundcheckradius, collisionlayers);
+        if (!isgrounded){
+            anim.SetBool("IsAir",true);
+        }
+        else{
+            anim.SetBool("IsAir",false);
+        }
 
-        if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name != "idle"){
+        if (Input.GetKey(crouch)){
+            anim.SetBool("iscrouching",true);
+        }
+        else {
+            anim.SetBool("iscrouching",false);
+        }
+
+
+        if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "idle"){
+            if (Input.GetKeyDown(jump)){
+                isjump = true;
+                isbackward = false;
+            }
+            
+
+            if (Input.GetKeyDown(attackkey)){
+                hitagain = true;
+                isbackward = false;
+                anim.SetTrigger("attack");
+            }
+            if (Input.GetKeyDown(kickkey)){
+                hitagain = true;
+                isbackward = false;
+                anim.SetTrigger("kick");
+            }
+        }
+
+        if(anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Jump"){
+            if (Input.GetKeyDown(kickkey)){
+                hitagain = true;
+                isbackward = false;
+                anim.SetTrigger("kick");
+            }
+        }
+
+
+        if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "block"){
             horizontal = 0f;
+            isbackward = true;
+        }
+        else if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name != "idle"){
+            horizontal = 0f;
+            isbackward = false;
         }
         else if (Input.GetKey(droite) && isgrounded)
         {
@@ -93,25 +141,7 @@ public class test : MonoBehaviour {
 
 
 
-
-        if (Input.GetKeyDown(jump) && anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "idle"){
-            isjump = true;
-        }
-        if (Input.GetKey(crouch)){
-            anim.SetBool("iscrouching",true);
-        }
-        if (Input.GetKeyUp(crouch)){
-            anim.SetBool("iscrouching",false);
-        }
-
-        if (Input.GetKeyDown(attackkey)){
-            hitagain = true;
-            anim.SetTrigger("attack");
-        }
-        if (Input.GetKeyDown(kickkey)){
-            hitagain = true;
-            anim.SetTrigger("kick");
-        }
+        
         
 
         if (Input.GetKeyDown(droite)){
@@ -139,7 +169,10 @@ public class test : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
+        //!transform.GetComponent<hitstun>().ishitstun
+        if (isgrounded){
+            rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
+        }
 
         if (isjump == true && isgrounded){
             rb.AddForce(new Vector2(0f, jumpforce));
