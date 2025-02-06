@@ -9,7 +9,7 @@ public class test : MonoBehaviour {
     [SerializeField] public string crouch ;
     [SerializeField] public string attackkey;
     [SerializeField] public string kickkey;
-    private bool isgrounded;
+    public bool isgrounded;
 
     [SerializeField] private float speed  ;
     [SerializeField] private float jetforce  ;
@@ -17,7 +17,7 @@ public class test : MonoBehaviour {
     [SerializeField] private float dashforce;
     [SerializeField] private float dashtime;
     [SerializeField] private float groundcheckradius;
-    [SerializeField] private Transform enemyposition;
+    [SerializeField] public Transform enemyposition;
 
 
 

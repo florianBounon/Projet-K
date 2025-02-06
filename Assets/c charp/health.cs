@@ -8,7 +8,7 @@ public class health : MonoBehaviour
 {
     [SerializeField] public int vie = 100;
     [SerializeField] private string CharaName;
-    [SerializeField] private string EnemyPlayerNumber;
+    [SerializeField] public string EnemyPlayerNumber;
     [SerializeField] public Slider healthbar;
     Animator anim;
     private GameObject epicwin;

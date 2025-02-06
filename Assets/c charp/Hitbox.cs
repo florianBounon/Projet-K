@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Hitbox : MonoBehaviour
 {
 
-    [SerializeField] private string enemytag;
+    [SerializeField] public string enemytag;
     [SerializeField] private int deg;
     [SerializeField] private int hitstunframes;
     [SerializeField] private float hitlagsec;
