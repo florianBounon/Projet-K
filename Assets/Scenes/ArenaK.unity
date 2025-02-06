@@ -2107,6 +2107,10 @@ PrefabInstance:
       propertyPath: hitstunframes
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 2586201900807733517, guid: 023f7e9acdf698042827c470df004556, type: 3}
+      propertyPath: m_TagString
+      value: Player2
+      objectReference: {fileID: 0}
     - target: {fileID: 3032689907647477371, guid: 023f7e9acdf698042827c470df004556, type: 3}
       propertyPath: healthbar
       value: 
@@ -2398,7 +2402,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 182429662267322228, guid: 023f7e9acdf698042827c470df004556, type: 3}
       propertyPath: hitstunframes
-      value: 40
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 231988904647532609, guid: 023f7e9acdf698042827c470df004556, type: 3}
       propertyPath: m_TagString
@@ -2464,6 +2468,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2586201900807733517, guid: 023f7e9acdf698042827c470df004556, type: 3}
+      propertyPath: m_TagString
+      value: Player1
+      objectReference: {fileID: 0}
     - target: {fileID: 2954845682945237650, guid: 023f7e9acdf698042827c470df004556, type: 3}
       propertyPath: attackkey
       value: e
@@ -2480,6 +2488,14 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: f0e310b419aab134796245c28cb7a344, type: 2}
+    - target: {fileID: 3624538456317014293, guid: 023f7e9acdf698042827c470df004556, type: 3}
+      propertyPath: m_Size.x
+      value: 7.529412
+      objectReference: {fileID: 0}
+    - target: {fileID: 3624538456317014293, guid: 023f7e9acdf698042827c470df004556, type: 3}
+      propertyPath: m_Size.y
+      value: 7.529412
+      objectReference: {fileID: 0}
     - target: {fileID: 3624538456317014293, guid: 023f7e9acdf698042827c470df004556, type: 3}
       propertyPath: m_SortingOrder
       value: 7
@@ -2507,6 +2523,10 @@ PrefabInstance:
     - target: {fileID: 4697766156882892513, guid: 023f7e9acdf698042827c470df004556, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015751444489081026, guid: 023f7e9acdf698042827c470df004556, type: 3}
+      propertyPath: m_TagString
+      value: Player1
       objectReference: {fileID: 0}
     - target: {fileID: 5223600919026942800, guid: 023f7e9acdf698042827c470df004556, type: 3}
       propertyPath: m_TagString

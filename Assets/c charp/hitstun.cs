@@ -30,7 +30,7 @@ public class hitstun : MonoBehaviour
         if (ishitstun){
             Timer -= Time.deltaTime;
             //if (framesleft <= 0){
-            if (Timer <= 0.0f){
+            if (Timer <= 0.0f && transform.GetComponent<test>().isgrounded){
                 comboscaling=0;
                 anim.SetTrigger("endhitstun");
                 ishitstun=false;
@@ -43,7 +43,7 @@ public class hitstun : MonoBehaviour
 
     private IEnumerator endofhitstun(){
         Debug.Log(framesleft/60f);
-        yield return new WaitForSeconds(framesleft/60f) ;
+        yield return new WaitForSeconds(framesleft/60f);
         Debug.Log("CHIER");
         framesleft =0;
     }
