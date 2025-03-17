@@ -2209,9 +2209,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 182429662267322228, guid: 023f7e9acdf698042827c470df004556, type: 3}
+      propertyPath: deg
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 182429662267322228, guid: 023f7e9acdf698042827c470df004556, type: 3}
       propertyPath: Combo
       value: 
       objectReference: {fileID: 300322358}
+    - target: {fileID: 182429662267322228, guid: 023f7e9acdf698042827c470df004556, type: 3}
+      propertyPath: blocklagsec
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 694375903967847059, guid: 023f7e9acdf698042827c470df004556, type: 3}
       propertyPath: m_Size.x
       value: 1.2346574
@@ -2245,12 +2253,20 @@ PrefabInstance:
       value: i
       objectReference: {fileID: 0}
     - target: {fileID: 1319352016127968856, guid: 023f7e9acdf698042827c470df004556, type: 3}
+      propertyPath: dashforce
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319352016127968856, guid: 023f7e9acdf698042827c470df004556, type: 3}
+      propertyPath: jumpforce
+      value: 1100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319352016127968856, guid: 023f7e9acdf698042827c470df004556, type: 3}
       propertyPath: enemyposition
       value: 
       objectReference: {fileID: 2121524947}
     - target: {fileID: 1613869003677152759, guid: 023f7e9acdf698042827c470df004556, type: 3}
       propertyPath: deg
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1613869003677152759, guid: 023f7e9acdf698042827c470df004556, type: 3}
       propertyPath: Combo
@@ -2575,12 +2591,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 182429662267322228, guid: 023f7e9acdf698042827c470df004556, type: 3}
+      propertyPath: deg
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 182429662267322228, guid: 023f7e9acdf698042827c470df004556, type: 3}
       propertyPath: Combo
       value: 
       objectReference: {fileID: 300322358}
     - target: {fileID: 182429662267322228, guid: 023f7e9acdf698042827c470df004556, type: 3}
       propertyPath: enemytag
       value: Player2
+      objectReference: {fileID: 0}
+    - target: {fileID: 182429662267322228, guid: 023f7e9acdf698042827c470df004556, type: 3}
+      propertyPath: blocklagsec
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 182429662267322228, guid: 023f7e9acdf698042827c470df004556, type: 3}
       propertyPath: hitstunframes
@@ -2619,8 +2643,12 @@ PrefabInstance:
       value: e
       objectReference: {fileID: 0}
     - target: {fileID: 1319352016127968856, guid: 023f7e9acdf698042827c470df004556, type: 3}
+      propertyPath: dashforce
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319352016127968856, guid: 023f7e9acdf698042827c470df004556, type: 3}
       propertyPath: jumpforce
-      value: 900
+      value: 1100
       objectReference: {fileID: 0}
     - target: {fileID: 1319352016127968856, guid: 023f7e9acdf698042827c470df004556, type: 3}
       propertyPath: enemyposition
@@ -2628,7 +2656,7 @@ PrefabInstance:
       objectReference: {fileID: 346456377}
     - target: {fileID: 1613869003677152759, guid: 023f7e9acdf698042827c470df004556, type: 3}
       propertyPath: deg
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1613869003677152759, guid: 023f7e9acdf698042827c470df004556, type: 3}
       propertyPath: Combo

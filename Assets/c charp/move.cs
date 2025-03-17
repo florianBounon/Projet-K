@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class test : MonoBehaviour {
@@ -30,8 +31,10 @@ public class test : MonoBehaviour {
     private float horizontal = 0f;
     private bool isjump = false;
     private bool isdash = false;
+    private bool dashable = true;
     public bool isbackward = false;
     public bool hitagain = false;
+    private bool dashspeeding;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundcheck;
@@ -55,130 +58,170 @@ public class test : MonoBehaviour {
     void Update()
     {   
         isgrounded = Physics2D.OverlapCircle(groundcheck.position, groundcheckradius, collisionlayers);
-        if (!isgrounded){
-            anim.SetBool("IsAir",true);
-        }
-        else{
-            anim.SetBool("IsAir",false);
-        }
+        if(!isdash){
+            if (!isgrounded){
+                anim.SetBool("IsAir",true);
+            }
+            else{
+                anim.SetBool("IsAir",false);
+            }
 
-        if (Input.GetKey(crouch)){
-            anim.SetBool("iscrouching",true);
-        }
-        else {
-            anim.SetBool("iscrouching",false);
-        }
+            if (Input.GetKey(crouch)){
+                anim.SetBool("iscrouching",true);
+            }
+            else {
+                anim.SetBool("iscrouching",false);
+            }
 
-
-        if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "idle"){
             if (Input.GetKeyDown(jump)){
                 isjump = true;
-                isbackward = false;
+                StartCoroutine(jumpbuffer());
             }
-        }
+
+            if (Input.GetKeyDown(attackkey)){
+                //hitagain = true;
+                //isbackward = false;
+                //anim.SetBool("Gatling",false);
+                anim.SetTrigger("attack");
+            }
+            if (Input.GetKeyDown(kickkey)){
+                //hitagain = true;
+                //isbackward = false;
+                anim.SetTrigger("kick");
+            }
             
 
-        if (Input.GetKeyDown(attackkey)){
-            hitagain = true;
-            isbackward = false;
-            anim.SetBool("Gatling",false);
-            anim.SetTrigger("attack");
-        }
-        if (Input.GetKeyDown(kickkey)){
-            hitagain = true;
-            isbackward = false;
-            anim.SetTrigger("kick");
-        }
-        
-
-        
+            
 
 
-        if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "block"){
-            horizontal = 0f;
-            isbackward = true;
-        }
-        else if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name != "idle"){
-            horizontal = 0f;
-            isbackward = false;
-        }
-        else if (Input.GetKey(droite) && isgrounded)
-        {
-            if (facingleft){
+            if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "block"){
+                horizontal = 0f;
                 isbackward = true;
-                horizontal = 0.25f;
+            }
+            else if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name != "idle"){
+                horizontal = 0f;
+
+                if (Input.GetKey(droite)){
+                    if (facingleft){
+                        isbackward = true;}
+                    else{
+                        isbackward = false;}
+                }
+
+                else if (Input.GetKey(gauche)){
+                if (!facingleft){
+                    isbackward = true;}
+                else{
+                    isbackward = false;}
+                }
+
+            }
+            else if (Input.GetKey(droite) && isgrounded)
+            {
+                if (facingleft){
+                    isbackward = true;
+                    horizontal = 0.25f;
+                }
+                else{
+                    isbackward = false;
+                    horizontal = 0.8f;
+                }
+            
+            }
+            else if (Input.GetKey(gauche) && isgrounded)
+            {
+                if (!facingleft){
+                    isbackward = true;
+                    horizontal = -0.25f;
+                }
+                else{
+                    isbackward = false;
+                    horizontal = -0.8f;
+                }
+                
+            }
+            else if (isgrounded)
+            {
+                horizontal = 0f;
+                isbackward = false;
             }
             else{
                 isbackward = false;
-                horizontal = 0.8f;
             }
-           
-        }
-        else if (Input.GetKey(gauche) && isgrounded)
-        {
-            if (!facingleft){
-                isbackward = true;
-                horizontal = -0.25f;
-            }
-            else{
-                isbackward = false;
-                horizontal = -0.8f;
-            }
+
+
+
             
-        }
-        else if (isgrounded)
-        {
-            horizontal = 0f;
-            isbackward = false;
-        }
-        else{
-            isbackward = false;
-        }
+            
 
-
-
-        
-        
-
-        if (Input.GetKeyDown(droite)){
-            if (Time.time - lastPressTimedroite <= doublePressTime && dash == 0){
-                dash = dashforce;
-                lastdash = Time.time;
-                isdash = true;
+            if (Input.GetKeyDown(droite)){
+                if (dashable && Time.time - lastPressTimedroite <= doublePressTime && dash == 0 && (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "idle" || anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Jump")){
+                    dash = dashforce;
+                    StartCoroutine(dashing());
+                }
+                lastPressTimedroite = Time.time;
             }
-            lastPressTimedroite = Time.time;
-        }
-        else if (Input.GetKeyDown(gauche)){
-            if (Time.time - lastPressTimegauche <= doublePressTime && dash == 0){
-                dash = -dashforce;
-                lastdash = Time.time;
-                isdash = true;
+            else if (Input.GetKeyDown(gauche)){
+                if (dashable && Time.time - lastPressTimegauche <= doublePressTime && dash == 0 && (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "idle" || anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Jump")){
+                    dash = -dashforce;
+                    StartCoroutine(dashing());
+                }
+                lastPressTimegauche = Time.time;
             }
-            lastPressTimegauche = Time.time;
+
+            if (Time.time - lastdash >= dashtime) {
+                dash=0f;
+            }
+
         }
-
-        if (Time.time - lastdash >= dashtime) {
-            dash=0f;
-        }
-
-
     }
 
     private void FixedUpdate() {
         //!transform.GetComponent<hitstun>().ishitstun
-        if (isgrounded){
+        if (dashspeeding){
+            rb.linearVelocity = new Vector2(dash,0);
+        }
+        else if (isgrounded){
             rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
         }
 
-        if (isjump == true && isgrounded){
+        if (isjump == true && isgrounded && (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "idle" || anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "crouch")){
+            rb.linearVelocity = new Vector2(horizontal * speed, 0);
             rb.AddForce(new Vector2(0f, jumpforce));
             isjump = false;
         }
 
-        if (isdash == true && isgrounded){
-            rb.AddForce(new Vector2(dash ,rb.linearVelocity.y));
-            isdash = false;
-        }
+        //if (isdash == true && isgrounded){
+            //rb.AddForce(new Vector2(dash ,rb.linearVelocity.y));
+            //isdash = false;
+        //}
 
+    }
+
+    private IEnumerator jumpbuffer(){
+        yield return new WaitForSeconds(0.2f);
+        isjump = false;
+    }
+
+    private IEnumerator dashing(){
+        lastdash = Time.time;
+        isdash = true;
+        dashspeeding = true;
+        dashable = false;
+        anim.SetBool("Dashing",true);
+        rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+        yield return new WaitForSeconds(0.05f);
+        anim.SetBool("Dashing",false);
+        isdash = false;
+        yield return new WaitForSeconds(0.15f);
+        dashspeeding = false;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        rb.linearVelocity = new Vector2(0,0);
+        StartCoroutine(dashcd());
+    }
+
+    private IEnumerator dashcd(){
+        yield return new WaitForSeconds(0.5f);
+        dashable = true;
     }
 }

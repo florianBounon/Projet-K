@@ -10,6 +10,7 @@ public class Hitbox : MonoBehaviour
     [SerializeField] private int deg;
     [SerializeField] private int hitstunframes;
     [SerializeField] private float hitlagsec;
+    [SerializeField] private float blocklagsec;
     [SerializeField] private float HorizKB;
     [SerializeField] private float VertiKB;
     [SerializeField] private BoxCollider2D hitbox;
@@ -22,8 +23,9 @@ public class Hitbox : MonoBehaviour
                 other.transform.root.GetComponent<Animator>().Play("block");
                 transform.root.GetComponent<test>().hitagain = false;
                 other.transform.root.GetComponent<hitstun>().basehitstun = hitstunframes;
-                other.transform.root.GetComponent<hitstun>().Timer += hitlagsec;
-                other.transform.root.GetComponent<hitstun>().hitbyattack = true;
+                other.transform.root.GetComponent<hitstun>().Timer += blocklagsec;
+                StopAllCoroutines();
+                StartCoroutine(hitlag(blocklagsec,other.gameObject));
             }
             else if (transform.root.GetComponent<test>().hitagain == true){
                 Combo.GetComponent<ComboCounter>().AddCombo();
@@ -42,6 +44,7 @@ public class Hitbox : MonoBehaviour
         }
     }
     private IEnumerator hitlag(float duration,GameObject enemy){
+
         Vector2 Momentum = transform.root.GetComponent<Rigidbody2D>().linearVelocity;
         transform.root.GetComponent<Animator>().speed = 0;
         enemy.transform.root.GetComponent<Animator>().speed = 0;
@@ -55,12 +58,13 @@ public class Hitbox : MonoBehaviour
         transform.root.GetComponent<Animator>().speed = 1;
         enemy.transform.root.GetComponent<Animator>().speed = 1;
         transform.root.GetComponent<Rigidbody2D>().linearVelocity = Momentum;
+
         if(transform.root.GetComponent<test>().facingleft){
-                    knockback(-HorizKB,VertiKB,enemy.gameObject);
-                }
-                else{
-                    knockback(HorizKB,VertiKB,enemy.gameObject);
-                }
+            knockback(-HorizKB,VertiKB,enemy.gameObject);
+        }
+        else{
+            knockback(HorizKB,VertiKB,enemy.gameObject);
+        }
         enemy.transform.root.GetComponent<hitstun>().hitbyattack = true;
     }
 
