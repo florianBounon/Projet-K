@@ -13,7 +13,10 @@ public class Hitbox : MonoBehaviour
     [SerializeField] private float HorizKB;
     [SerializeField] private float VertiKB;
     [SerializeField] private BoxCollider2D hitbox;
+    [SerializeField] private GameObject Combo;
+
     private void OnTriggerEnter2D(Collider2D other) {
+        transform.root.GetComponent<Animator>().SetBool("Gatling",true);
         if (other.gameObject.tag == enemytag){
             if (other.transform.root.GetComponent<test>().isbackward && transform.root.GetComponent<test>().hitagain == true){
                 other.transform.root.GetComponent<Animator>().Play("block");
@@ -23,6 +26,7 @@ public class Hitbox : MonoBehaviour
                 other.transform.root.GetComponent<hitstun>().hitbyattack = true;
             }
             else if (transform.root.GetComponent<test>().hitagain == true){
+                Combo.GetComponent<ComboCounter>().AddCombo();
                 GameObject.FindWithTag("MainCamera").GetComponent<Animator>().SetTrigger("shake");
                 other.transform.root.GetComponent<Animator>().ResetTrigger("endhitstun");
                 transform.root.GetComponent<test>().hitagain = false;

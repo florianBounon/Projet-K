@@ -75,27 +75,23 @@ public class test : MonoBehaviour {
                 isjump = true;
                 isbackward = false;
             }
+        }
             
 
-            if (Input.GetKeyDown(attackkey)){
-                hitagain = true;
-                isbackward = false;
-                anim.SetTrigger("attack");
-            }
-            if (Input.GetKeyDown(kickkey)){
-                hitagain = true;
-                isbackward = false;
-                anim.SetTrigger("kick");
-            }
+        if (Input.GetKeyDown(attackkey)){
+            hitagain = true;
+            isbackward = false;
+            anim.SetBool("Gatling",false);
+            anim.SetTrigger("attack");
         }
+        if (Input.GetKeyDown(kickkey)){
+            hitagain = true;
+            isbackward = false;
+            anim.SetTrigger("kick");
+        }
+        
 
-        if(anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Jump"){
-            if (Input.GetKeyDown(kickkey)){
-                hitagain = true;
-                isbackward = false;
-                anim.SetTrigger("kick");
-            }
-        }
+        
 
 
         if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "block"){
