@@ -7,6 +7,7 @@ TagManager:
   - Player2
   - Player1
   - epicwin
+  - parry
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - hitbox
   - epicwin
   - deadguy
-  - 
-  - 
+  - parry
+  - walls
   - 
   - 
   - 

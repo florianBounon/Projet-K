@@ -10,6 +10,7 @@ public class test : MonoBehaviour {
     [SerializeField] private string crouch ;
     [SerializeField] private string attackkey;
     [SerializeField] private string kickkey;
+    [SerializeField] private string parrykey;
     public bool isgrounded;
     
 
@@ -26,7 +27,7 @@ public class test : MonoBehaviour {
     private float lastPressTimedroite = -Mathf.Infinity; 
     private float lastPressTimegauche = -Mathf.Infinity; 
     private float lastdash = -Mathf.Infinity; 
-    private float doublePressTime = 0.5f;
+    private float doublePressTime = 0.2f;
     private float dash = 0f;
     private float horizontal = 0f;
     private bool isjump = false;
@@ -34,26 +35,31 @@ public class test : MonoBehaviour {
     private bool dashable = true;
     public bool isbackward = false;
     public bool hitagain = false;
+    public bool doublejumpable = false;
     private bool dashspeeding;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundcheck;
     [SerializeField] private LayerMask collisionlayers;
     public bool facingleft = false;
+    private int rota;
     Animator anim;
 
     private void Start() {
         anim = GetComponent<Animator> ();
     }
     private void LateUpdate() {
-        if (transform.position.x <= enemyposition.position.x){
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-            facingleft = false;
+        if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name != "attack" && anim.GetCurrentAnimatorClipInfo(0)[0].clip.name != "AirKick" && anim.GetCurrentAnimatorClipInfo(0)[0].clip.name != "AirPunch" && anim.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Kick"){
+            if (transform.position.x <= enemyposition.position.x){
+                rota = 0;
+                facingleft = false;
+            }
+            else{
+                rota = 180;
+                facingleft = true;
+            }
         }
-        else{
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-            facingleft = true;
-        }
+        transform.rotation = Quaternion.Euler(0, rota, 0);
     }
     void Update()
     {   
@@ -64,6 +70,7 @@ public class test : MonoBehaviour {
             }
             else{
                 anim.SetBool("IsAir",false);
+                doublejumpable = true;
             }
 
             if (Input.GetKey(crouch)){
@@ -79,15 +86,23 @@ public class test : MonoBehaviour {
             }
 
             if (Input.GetKeyDown(attackkey)){
-                //hitagain = true;
-                //isbackward = false;
-                //anim.SetBool("Gatling",false);
+                if (isgrounded){
+                    rb.linearVelocityX = 0;
+                }
                 anim.SetTrigger("attack");
             }
             if (Input.GetKeyDown(kickkey)){
-                //hitagain = true;
-                //isbackward = false;
+                if (isgrounded){
+                    rb.linearVelocityX = 0;
+                }
                 anim.SetTrigger("kick");
+            }
+            if (Input.GetKeyDown(parrykey)){
+                if (isgrounded){
+                    rb.linearVelocityX = 0;
+                }
+                anim.SetTrigger("parry");
+                StartCoroutine(parrybuffer());
             }
             
 
@@ -98,7 +113,7 @@ public class test : MonoBehaviour {
                 horizontal = 0f;
                 isbackward = true;
             }
-            else if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name != "idle"){
+            /*else if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Jump"){
                 horizontal = 0f;
 
                 if (Input.GetKey(droite)){
@@ -115,8 +130,13 @@ public class test : MonoBehaviour {
                     isbackward = false;}
                 }
 
+            }*/
+            else if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Jump" && anim.GetCurrentAnimatorClipInfo(0)[0].clip.name != "idle"){
+                horizontal = 0f;
+                isbackward = false;
             }
-            else if (Input.GetKey(droite) && isgrounded)
+
+            else if (Input.GetKey(droite))
             {
                 if (facingleft){
                     isbackward = true;
@@ -128,7 +148,7 @@ public class test : MonoBehaviour {
                 }
             
             }
-            else if (Input.GetKey(gauche) && isgrounded)
+            else if (Input.GetKey(gauche))
             {
                 if (!facingleft){
                     isbackward = true;
@@ -140,12 +160,9 @@ public class test : MonoBehaviour {
                 }
                 
             }
-            else if (isgrounded)
+            else
             {
                 horizontal = 0f;
-                isbackward = false;
-            }
-            else{
                 isbackward = false;
             }
 
@@ -174,6 +191,7 @@ public class test : MonoBehaviour {
             }
 
         }
+        
     }
 
     private void FixedUpdate() {
@@ -181,11 +199,18 @@ public class test : MonoBehaviour {
         if (dashspeeding){
             rb.linearVelocity = new Vector2(dash,0);
         }
-        else if (isgrounded){
+        else if (isgrounded && anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "idle"){
             rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
         }
+        else if (isgrounded){
+            rb.linearVelocityX *= 0.95f;
+        }
 
-        if (isjump == true && isgrounded && (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "idle" || anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "crouch")){
+        if (isjump == true && (isgrounded || doublejumpable) && (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "idle" || anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "crouch" || anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Jump") && !dashspeeding){
+            if (!isgrounded){
+                doublejumpable = false;
+
+            }
             rb.linearVelocity = new Vector2(horizontal * speed, 0);
             rb.AddForce(new Vector2(0f, jumpforce));
             isjump = false;
@@ -201,6 +226,11 @@ public class test : MonoBehaviour {
     private IEnumerator jumpbuffer(){
         yield return new WaitForSeconds(0.2f);
         isjump = false;
+    }
+
+    private IEnumerator parrybuffer(){
+        yield return new WaitForSeconds(0.2f);
+        anim.ResetTrigger("parry");
     }
 
     private IEnumerator dashing(){
@@ -221,7 +251,8 @@ public class test : MonoBehaviour {
     }
 
     private IEnumerator dashcd(){
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
         dashable = true;
     }
+
 }
