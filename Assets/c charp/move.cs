@@ -172,23 +172,21 @@ public class test : MonoBehaviour {
             
 
             if (Input.GetKeyDown(droite)){
-                if (dashable && Time.time - lastPressTimedroite <= doublePressTime && dash == 0 && (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "idle" || anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Jump")){
+                if (dashable && Time.time - lastPressTimedroite <= doublePressTime && (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "idle" || anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Jump")){
                     dash = dashforce;
                     StartCoroutine(dashing());
                 }
                 lastPressTimedroite = Time.time;
             }
             else if (Input.GetKeyDown(gauche)){
-                if (dashable && Time.time - lastPressTimegauche <= doublePressTime && dash == 0 && (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "idle" || anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Jump")){
+                if (dashable && Time.time - lastPressTimegauche <= doublePressTime && (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "idle" || anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Jump")){
                     dash = -dashforce;
                     StartCoroutine(dashing());
                 }
                 lastPressTimegauche = Time.time;
             }
 
-            if (Time.time - lastdash >= dashtime) {
-                dash=0f;
-            }
+            
 
         }
         
