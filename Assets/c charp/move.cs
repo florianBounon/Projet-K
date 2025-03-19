@@ -24,7 +24,7 @@ public class test : MonoBehaviour {
     [SerializeField] private float dashtime;
     [SerializeField] private float groundcheckradius;
     [SerializeField] public Transform enemyposition;
-    [SerializeField] private string enemytag;
+    [SerializeField] public string enemytag;
     [SerializeField] public string owntag;
 
 

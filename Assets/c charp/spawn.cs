@@ -88,6 +88,9 @@ public class spawn : MonoBehaviour
 
                 healthScript.EnemyPlayerNumber = "Player 2";
 
+                playerScript.enemytag = "Player2";
+                playerScript.owntag = "Player1";
+
                 playerScript.ComboCount = ComboCount;
 
                 hitstunScript.Combo = ComboCount;
@@ -118,6 +121,10 @@ public class spawn : MonoBehaviour
                 playerScript.dashkey = keymanager.player2Controls.dashkey;
 
                 healthScript.EnemyPlayerNumber = "Player 1";
+
+                playerScript.enemytag = "Player1";
+                playerScript.owntag = "Player2";
+
 
                 hitstunScript.Combo = ComboCount;
 
@@ -174,8 +181,11 @@ public class spawn : MonoBehaviour
         // Appliquer le tag à chaque enfant du parent
         foreach (Transform child in parentTransform)
         {
-            // Assigner le tag à l'enfant
-            child.gameObject.tag = tag;
+            if (child.gameObject.tag == "Player1")
+            {
+                // Assigner le tag à l'enfant
+                child.gameObject.tag = tag;
+            }
 
             // Vérifier si l'objet possède le script Hitbox
             Hitbox hitboxScript = child.GetComponent<Hitbox>();
