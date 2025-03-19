@@ -1,5 +1,6 @@
 using UnityEngine;
-using UnityEngine.UI; // Ajouter ce using pour manipuler le Slider
+using UnityEngine.InputSystem; 
+using UnityEngine.UI; 
 
 public class spawn : MonoBehaviour
 {
@@ -19,8 +20,14 @@ public class spawn : MonoBehaviour
     private GameObject player1Instance;
     private GameObject player2Instance;
 
+    // Référence au keymanager pour accéder aux contrôles des joueurs
+    private keymanager keymanager;
+
     void Start()
     {
+        // Récupérer la référence du keymanager
+        keymanager = keymanager.instance;
+
         // Récupérer les personnages choisis des joueurs
         string player1Character = PlayerPrefs.GetString("Player1Character", "Default");
         string player2Character = PlayerPrefs.GetString("Player2Character", "Default");
@@ -64,12 +71,12 @@ public class spawn : MonoBehaviour
             // Assigner les touches en fonction du joueur
             if (playerNumber == 1)
             {
-                playerScript.droite = "d";  // Par exemple, touche droite pour le joueur 1
-                playerScript.gauche = "a";  // Touche gauche pour le joueur 1
-                playerScript.jump = "w";    // Touche jump pour le joueur 1
-                playerScript.crouch = "s";
-                playerScript.attackkey = "e";
-                playerScript.kickkey = "f";
+                playerScript.droite = keymanager.player1Controls.droite;
+                playerScript.gauche = keymanager.player1Controls.gauche;
+                playerScript.jump = keymanager.player1Controls.jump;
+                playerScript.crouch = keymanager.player1Controls.crouch;
+                playerScript.attackkey = keymanager.player1Controls.attackkey;
+                playerScript.kickkey = keymanager.player1Controls.kickkey;
                 healthScript.EnemyPlayerNumber = "Player 2";
 
                 // Stocker la référence du joueur 1
@@ -85,12 +92,12 @@ public class spawn : MonoBehaviour
             }
             else if (playerNumber == 2)
             {
-                playerScript.droite = ";";  // Touche droite pour le joueur 2
-                playerScript.gauche = "k";   // Touche gauche pour le joueur 2
-                playerScript.jump = "o";             // Touche jump pour le joueur 2
-                playerScript.crouch = "l";
-                playerScript.attackkey = "i";
-                playerScript.kickkey = "j";
+                playerScript.droite = keymanager.player2Controls.droite;
+                playerScript.gauche = keymanager.player2Controls.gauche;
+                playerScript.jump = keymanager.player2Controls.jump;
+                playerScript.crouch = keymanager.player2Controls.crouch;
+                playerScript.attackkey = keymanager.player2Controls.attackkey;
+                playerScript.kickkey = keymanager.player2Controls.kickkey;
                 healthScript.EnemyPlayerNumber = "Player 1";
 
                 // Stocker la référence du joueur 2
