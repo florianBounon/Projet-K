@@ -3,9 +3,9 @@ using UnityEngine;
 public class damage : MonoBehaviour
 {
 
-    [SerializeField] private string enemytag;
-    [SerializeField] private int deg;
-    [SerializeField] private BoxCollider2D hitbox;
+    [SerializeField] public string enemytag;
+    [SerializeField] public int deg;
+    [SerializeField] public BoxCollider2D hitbox;
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == enemytag){
             if (other.transform.parent.gameObject.GetComponent<test>().isbackward){

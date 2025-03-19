@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class hitstun : MonoBehaviour
 {
+    [SerializeField] private GameObject Combo;
+    [SerializeField] private GameObject Enemy;
     Animator anim;
     public int comboscaling;
     public int basehitstun;
@@ -31,6 +33,8 @@ public class hitstun : MonoBehaviour
             Timer -= Time.deltaTime;
             //if (framesleft <= 0){
             if (Timer <= 0.0f && transform.GetComponent<test>().isgrounded){
+                Enemy.GetComponent<Animator>().SetBool("Gatling",false);
+                Combo.GetComponent<ComboCounter>().ResetCombo();
                 comboscaling=0;
                 anim.SetTrigger("endhitstun");
                 ishitstun=false;

@@ -7,6 +7,9 @@ TagManager:
   - Player2
   - Player1
   - epicwin
+  - parry
+  - grab
+  - Projectile
   layers:
   - Default
   - TransparentFX
@@ -18,9 +21,9 @@ TagManager:
   - hitbox
   - epicwin
   - deadguy
-  - 
-  - 
-  - 
+  - parry
+  - walls
+  - grab
   - 
   - 
   - 
