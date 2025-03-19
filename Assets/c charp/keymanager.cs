@@ -42,9 +42,9 @@ public class keymanager : MonoBehaviour
         {
             player1Controls.droite = "Gamepad_Right";  // Correspond au bouton de la manette
             player1Controls.gauche = "Gamepad_Left";  // Correspond au bouton de la manette
-            player1Controls.jump = "Gamepad_A";      // A, B, X, Y sont des boutons courants
+            player1Controls.jump = "Gamepad_Up";      // A, B, X, Y sont des boutons courants
             player1Controls.crouch = "Gamepad_Down";
-            player1Controls.attackkey = "Gamepad_B"; 
+            player1Controls.attackkey = "Gamepad_B";
             player1Controls.kickkey = "Gamepad_X";
         }
         else
@@ -55,6 +55,11 @@ public class keymanager : MonoBehaviour
             player1Controls.crouch = PlayerPrefs.GetString("Player1CrouchKey", "s");
             player1Controls.attackkey = PlayerPrefs.GetString("Player1AttackKey", "e");
             player1Controls.kickkey = PlayerPrefs.GetString("Player1KickKey", "f");
+
+            player1Controls.projectile = PlayerPrefs.GetString("Player1ProjectileKey", "v");
+            player1Controls.grabkey = PlayerPrefs.GetString("Player1GrabKey", "r");
+            player1Controls.parrykey = PlayerPrefs.GetString("Player1ParryKey", "q");
+            player1Controls.dashkey = PlayerPrefs.GetString("Player1DashKey", "left shift");
         }
 
         // Répéter pour le joueur 2
@@ -62,7 +67,7 @@ public class keymanager : MonoBehaviour
         {
             player2Controls.droite = "Gamepad_Right";
             player2Controls.gauche = "Gamepad_Left";
-            player2Controls.jump = "Gamepad_A";
+            player2Controls.jump = "Gamepad_Up";
             player2Controls.crouch = "Gamepad_Down";
             player2Controls.attackkey = "Gamepad_B";
             player2Controls.kickkey = "Gamepad_X";
@@ -75,6 +80,11 @@ public class keymanager : MonoBehaviour
             player2Controls.crouch = PlayerPrefs.GetString("Player2CrouchKey", "l");
             player2Controls.attackkey = PlayerPrefs.GetString("Player2AttackKey", "i");
             player2Controls.kickkey = PlayerPrefs.GetString("Player2KickKey", "j");
+
+            player2Controls.projectile = PlayerPrefs.GetString("Player2ProjectileKey", "n");
+            player2Controls.grabkey = PlayerPrefs.GetString("Player2GrabKey", "u");
+            player2Controls.parrykey = PlayerPrefs.GetString("Player2ParryKey", "p");
+            player2Controls.dashkey = PlayerPrefs.GetString("Player2DashKey", "right shift");
         }
     }
 
@@ -86,11 +96,21 @@ public class keymanager : MonoBehaviour
         PlayerPrefs.SetString("Player1AttackKey", player1Controls.attackkey);
         PlayerPrefs.SetString("Player1KickKey", player1Controls.kickkey);
 
+        PlayerPrefs.SetString("Player1ProjectileKey", player1Controls.projectile);
+        PlayerPrefs.SetString("Player1GrabKey", player1Controls.grabkey);
+        PlayerPrefs.SetString("Player1ParryKey", player1Controls.parrykey);
+        PlayerPrefs.SetString("Player1DashKey", player1Controls.dashkey);
+
         PlayerPrefs.SetString("Player2RightKey", player2Controls.droite);
         PlayerPrefs.SetString("Player2LeftKey", player2Controls.gauche);
         PlayerPrefs.SetString("Player2JumpKey", player2Controls.jump);
         PlayerPrefs.SetString("Player2AttackKey", player2Controls.attackkey);
         PlayerPrefs.SetString("Player2KickKey", player2Controls.kickkey);
+
+        PlayerPrefs.SetString("Player2ProjectileKey", player2Controls.projectile);
+        PlayerPrefs.SetString("Player2GrabKey", player2Controls.grabkey);
+        PlayerPrefs.SetString("Player2ParryKey", player2Controls.parrykey);
+        PlayerPrefs.SetString("Player2DashKey", player2Controls.dashkey);
 
         PlayerPrefs.Save();
     }

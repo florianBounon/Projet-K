@@ -16,6 +16,8 @@ public class spawn : MonoBehaviour
     public Slider healthbarPlayer1;
     public Slider healthbarPlayer2;
 
+    public GameObject ComboCount;
+
     // Références pour les joueurs instanciés
     private GameObject player1Instance;
     private GameObject player2Instance;
@@ -67,6 +69,7 @@ public class spawn : MonoBehaviour
             // Récupérer le script "test" attaché au personnage
             test playerScript = playerInstance.GetComponent<test>();
             health healthScript = playerInstance.GetComponent<health>();
+            hitstun hitstunScript = playerInstance.GetComponent<hitstun>();
 
             // Assigner les touches en fonction du joueur
             if (playerNumber == 1)
@@ -77,7 +80,17 @@ public class spawn : MonoBehaviour
                 playerScript.crouch = keymanager.player1Controls.crouch;
                 playerScript.attackkey = keymanager.player1Controls.attackkey;
                 playerScript.kickkey = keymanager.player1Controls.kickkey;
+
+                playerScript.projectile = keymanager.player1Controls.projectile;
+                playerScript.grabkey = keymanager.player1Controls.grabkey;
+                playerScript.parrykey = keymanager.player1Controls.parrykey;
+                playerScript.dashkey = keymanager.player1Controls.dashkey;
+
                 healthScript.EnemyPlayerNumber = "Player 2";
+
+                playerScript.ComboCount = ComboCount;
+
+                hitstunScript.Combo = ComboCount;
 
                 // Stocker la référence du joueur 1
                 player1Instance = playerInstance;
@@ -98,7 +111,17 @@ public class spawn : MonoBehaviour
                 playerScript.crouch = keymanager.player2Controls.crouch;
                 playerScript.attackkey = keymanager.player2Controls.attackkey;
                 playerScript.kickkey = keymanager.player2Controls.kickkey;
+
+                playerScript.projectile = keymanager.player2Controls.projectile;
+                playerScript.grabkey = keymanager.player2Controls.grabkey;
+                playerScript.parrykey = keymanager.player2Controls.parrykey;
+                playerScript.dashkey = keymanager.player2Controls.dashkey;
+
                 healthScript.EnemyPlayerNumber = "Player 1";
+
+                hitstunScript.Combo = ComboCount;
+
+                playerScript.ComboCount = ComboCount;
 
                 // Stocker la référence du joueur 2
                 player2Instance = playerInstance;
@@ -125,6 +148,13 @@ public class spawn : MonoBehaviour
 
             player1Script.enemyposition = player2Instance.transform;  // Joueur 1 connaît la position du joueur 2
             player2Script.enemyposition = player1Instance.transform;  // Joueur 2 connaît la position du joueur 1
+
+            
+            hitstun player1Scripthitstun = player1Instance.GetComponent<hitstun>();
+            hitstun player2Scripthitstun = player2Instance.GetComponent<hitstun>();
+
+            player1Scripthitstun.Enemy = player2Instance;
+            player2Scripthitstun.Enemy = player1Instance;
         }
     }
 
@@ -153,6 +183,7 @@ public class spawn : MonoBehaviour
             {
                 // Si le script Hitbox est trouvé, assigner le tag de l'ennemi
                 hitboxScript.enemytag = enemyTag;  // Modifier la variable enemytag avec le tag de l'adversaire
+                hitboxScript.Combo = ComboCount;
             }
 
             // Appel récursif pour les sous-enfants

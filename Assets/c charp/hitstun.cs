@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class hitstun : MonoBehaviour
 {
-    [SerializeField] private GameObject Combo;
-    [SerializeField] private GameObject Enemy;
+    [SerializeField] public GameObject Combo;
+    [SerializeField] public GameObject Enemy;
     Animator anim;
     public int comboscaling;
     public int basehitstun;

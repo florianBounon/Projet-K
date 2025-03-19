@@ -48,7 +48,7 @@ public class test : MonoBehaviour {
     [SerializeField] private Transform groundcheck;
     [SerializeField] private LayerMask collisionlayers;
     [SerializeField] private GameObject projectileprefab;
-    [SerializeField] private GameObject ComboCount;
+    [SerializeField] public GameObject ComboCount;
     public bool facingleft = false;
     private int rota;
     Animator anim;
