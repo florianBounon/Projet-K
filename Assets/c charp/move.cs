@@ -10,6 +10,7 @@ public class test : MonoBehaviour {
     [SerializeField] private string crouch ;
     [SerializeField] private string attackkey;
     [SerializeField] private string kickkey;
+    [SerializeField] private string projectile;
     public bool isgrounded;
     
 
@@ -39,6 +40,7 @@ public class test : MonoBehaviour {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundcheck;
     [SerializeField] private LayerMask collisionlayers;
+    [SerializeField] private GameObject projectileprefab;
     public bool facingleft = false;
     Animator anim;
 
@@ -89,7 +91,11 @@ public class test : MonoBehaviour {
                 //isbackward = false;
                 anim.SetTrigger("kick");
             }
-            
+            if (Input.GetKeyDown(projectile))
+            {
+                Instantiate(projectileprefab,GetComponent<Transform>());
+            }
+
 
             
 
