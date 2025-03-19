@@ -7,6 +7,7 @@ public class Hitbox : MonoBehaviour
 {
 
     [SerializeField] public string enemytag;
+    [SerializeField] public string owntag;
     [SerializeField] private string parrytag;
     [SerializeField] private int deg;
     [SerializeField] private int hitstunframes;
@@ -58,11 +59,25 @@ public class Hitbox : MonoBehaviour
         else if (other.gameObject.tag == parrytag){
             other.transform.root.GetComponent<Animator>().SetTrigger("endhitstun");
             other.transform.root.Find("ParryBurst").gameObject.GetComponent<ParticleSystem>().Play();
-            Rooted.GetComponent<Animator>().ResetTrigger("endhitstun");
-            Rooted.GetComponent<Animator>().SetTrigger("ishit");
             if (gameObject.tag != "Projectile"){
                 Rooted.GetComponent<hitstun>().basehitstun = 120;
             }
+            else{
+                var temptag = enemytag;
+                enemytag = owntag;
+                owntag = temptag;
+                if (GetComponent<Projectile>().direction == Vector2.right){
+                    GetComponent<Projectile>().direction = Vector2.left;
+                }
+                else{
+                    GetComponent<Projectile>().direction = Vector2.right;
+                }
+                GetComponent<Projectile>().Deviate();
+                Rooted.GetComponent<hitstun>().basehitstun = 0;
+                Rooted = other.transform.root.gameObject;
+            }
+            Rooted.GetComponent<Animator>().ResetTrigger("endhitstun");
+            Rooted.GetComponent<Animator>().SetTrigger("ishit");
             Rooted.GetComponent<hitstun>().Timer += hitlagsec;
             StartCoroutine(hitlag(hitlagsec,other.gameObject, false, true));
         }

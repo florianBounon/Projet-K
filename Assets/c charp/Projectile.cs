@@ -15,4 +15,8 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject, lifetime); // Auto-destruction après un temps défini
     }
     
+    public void Deviate(){
+        rb.linearVelocity = direction * speed;
+        Destroy(gameObject, lifetime);
+    }
 }

@@ -153,7 +153,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.73594713, y: 0}
+  m_Offset: {x: -0.09828055, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -163,7 +163,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.1547737, y: 1}
+  m_Size: {x: 1.0678751, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &5411727997208315673
 MonoBehaviour:
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
-  lifetime: 3
+  lifetime: 50
   direction: {x: 1, y: 0}
 --- !u!114 &8570134375747267463
 MonoBehaviour:
@@ -193,14 +193,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemytag: Player2
+  owntag: Player1
   parrytag: parry
   deg: 10
   hitstunframes: 30
   blockstunframes: 20
   hitlagsec: 0
   blocklagsec: 0
-  HorizKB: 200
-  VertiKB: 10
+  HorizKB: 100
+  VertiKB: 400
   hitbox: {fileID: 7852170539123916723}
   Combo: {fileID: 0}
   Rooted: {fileID: 0}

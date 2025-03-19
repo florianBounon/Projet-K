@@ -25,6 +25,7 @@ public class test : MonoBehaviour {
     [SerializeField] private float groundcheckradius;
     [SerializeField] public Transform enemyposition;
     [SerializeField] private string enemytag;
+    [SerializeField] public string owntag;
 
 
 
@@ -290,6 +291,7 @@ public class test : MonoBehaviour {
         ProjectileClone.GetComponent<Hitbox>().Combo = ComboCount;
         ProjectileClone.GetComponent<Hitbox>().Rooted = gameObject;
         ProjectileClone.GetComponent<Hitbox>().enemytag = enemytag;
+        ProjectileClone.GetComponent<Hitbox>().owntag = owntag;
         if (facingleft){
             ProjectileClone.GetComponent<Projectile>().direction = Vector2.left;
         }

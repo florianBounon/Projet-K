@@ -1866,6 +1866,10 @@ PrefabInstance:
       value: k
       objectReference: {fileID: 0}
     - target: {fileID: 4207844464786383125, guid: 8065576f27f6148429c1bc9fe9a34acb, type: 3}
+      propertyPath: owntag
+      value: Player2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4207844464786383125, guid: 8065576f27f6148429c1bc9fe9a34acb, type: 3}
       propertyPath: dashkey
       value: right shift
       objectReference: {fileID: 0}
@@ -2828,6 +2832,10 @@ PrefabInstance:
       propertyPath: Combo
       value: 
       objectReference: {fileID: 300322358}
+    - target: {fileID: 1100775489488208769, guid: 5013b275c2b134d42be0bf1987adc7cf, type: 3}
+      propertyPath: owntag
+      value: Player1
+      objectReference: {fileID: 0}
     - target: {fileID: 1100775489488208769, guid: 5013b275c2b134d42be0bf1987adc7cf, type: 3}
       propertyPath: ComboCount
       value: 
