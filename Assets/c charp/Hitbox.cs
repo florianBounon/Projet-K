@@ -39,7 +39,7 @@ public class Hitbox : MonoBehaviour
                 StopAllCoroutines();
                 StartCoroutine(hitlag(blocklagsec,other.gameObject,true, false));
             }
-            else if (transform.root.GetComponent<test>().hitagain == true){
+            else if (transform.root.GetComponent<test>().hitagain || gameObject.tag == "Projectile"){
                 Combo.GetComponent<ComboCounter>().AddCombo();
                 GameObject.FindWithTag("MainCamera").GetComponent<Animator>().SetTrigger("shake");
                 other.transform.root.GetComponent<Animator>().ResetTrigger("endhitstun");

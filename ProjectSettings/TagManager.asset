@@ -9,6 +9,7 @@ TagManager:
   - epicwin
   - parry
   - grab
+  - Projectile
   layers:
   - Default
   - TransparentFX

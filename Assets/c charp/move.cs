@@ -10,9 +10,13 @@ public class test : MonoBehaviour {
     [SerializeField] private string crouch ;
     [SerializeField] private string attackkey;
     [SerializeField] private string kickkey;
+<<<<<<< HEAD
     [SerializeField] private string grabkey;
     [SerializeField] private string parrykey;
     [SerializeField] private string dashkey;
+=======
+    [SerializeField] private string projectile;
+>>>>>>> origin/projectile
     public bool isgrounded;
     
 
@@ -43,6 +47,7 @@ public class test : MonoBehaviour {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundcheck;
     [SerializeField] private LayerMask collisionlayers;
+    [SerializeField] private GameObject projectileprefab;
     public bool facingleft = false;
     private int rota;
     Animator anim;
@@ -99,6 +104,7 @@ public class test : MonoBehaviour {
                 }
                 anim.SetTrigger("kick");
             }
+<<<<<<< HEAD
             if (Input.GetKeyDown(grabkey)){
                 if (isgrounded){
                     rb.linearVelocityX = 0;
@@ -113,6 +119,13 @@ public class test : MonoBehaviour {
                 StartCoroutine(parrybuffer());
             }
             
+=======
+            if (Input.GetKeyDown(projectile))
+            {
+                Instantiate(projectileprefab,GetComponent<Transform>());
+            }
+
+>>>>>>> origin/projectile
 
             
 
