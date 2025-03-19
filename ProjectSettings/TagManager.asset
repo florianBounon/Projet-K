@@ -8,6 +8,7 @@ TagManager:
   - Player1
   - epicwin
   - parry
+  - grab
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - deadguy
   - parry
   - walls
-  - 
+  - grab
   - 
   - 
   - 

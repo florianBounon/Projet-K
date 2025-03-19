@@ -10,7 +10,9 @@ public class test : MonoBehaviour {
     [SerializeField] private string crouch ;
     [SerializeField] private string attackkey;
     [SerializeField] private string kickkey;
+    [SerializeField] private string grabkey;
     [SerializeField] private string parrykey;
+    [SerializeField] private string dashkey;
     public bool isgrounded;
     
 
@@ -96,6 +98,12 @@ public class test : MonoBehaviour {
                     rb.linearVelocityX = 0;
                 }
                 anim.SetTrigger("kick");
+            }
+            if (Input.GetKeyDown(grabkey)){
+                if (isgrounded){
+                    rb.linearVelocityX = 0;
+                }
+                anim.SetTrigger("grab");
             }
             if (Input.GetKeyDown(parrykey)){
                 if (isgrounded){
@@ -184,6 +192,17 @@ public class test : MonoBehaviour {
                     StartCoroutine(dashing());
                 }
                 lastPressTimegauche = Time.time;
+            }
+
+            if (dashable &&  Input.GetKeyDown(dashkey) && (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "idle" || anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Jump")){
+                if (Input.GetKey(droite)){
+                    dash = dashforce;
+                    StartCoroutine(dashing());
+                }
+                else if (Input.GetKey(gauche)){
+                    dash = -dashforce;
+                    StartCoroutine(dashing());
+                }
             }
 
             

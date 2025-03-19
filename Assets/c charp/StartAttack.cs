@@ -9,6 +9,10 @@ public class StartAttack : StateMachineBehaviour
        animator.transform.GetComponent<test>().hitagain = true;
        animator.transform.GetComponent<test>().isbackward = true;
        animator.SetBool("Gatling",false);
+       if (animator.transform.GetComponent<test>().isgrounded){
+            animator.transform.GetComponent<Rigidbody2D>().linearVelocityX = 0;
+       }
+
 
     }
 

@@ -21,6 +21,15 @@ public class Hitbox : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         transform.root.GetComponent<Animator>().SetBool("Gatling",true);
         if (other.gameObject.tag == enemytag){
+            if (transform.tag == "grab" && other.transform.root.GetComponent<test>().isgrounded){
+                other.transform.root.GetComponent<Animator>().ResetTrigger("endhitstun");
+                other.transform.root.GetComponent<Animator>().SetTrigger("ishit");
+                other.transform.root.GetComponent<hitstun>().basehitstun = 120;
+                other.transform.root.GetComponent<hitstun>().Timer += hitlagsec;
+                StopAllCoroutines();
+                StartCoroutine(hitlag(hitlagsec,gameObject, false, false));
+                transform.root.GetComponent<Animator>().SetTrigger("kick");
+            }
             if (other.transform.root.GetComponent<test>().isbackward && transform.root.GetComponent<test>().hitagain == true){
                 other.transform.root.GetComponent<Animator>().ResetTrigger("endhitstun");
                 other.transform.root.GetComponent<Animator>().Play("block");
