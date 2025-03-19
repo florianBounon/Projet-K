@@ -10,13 +10,10 @@ public class test : MonoBehaviour {
     [SerializeField] private string crouch ;
     [SerializeField] private string attackkey;
     [SerializeField] private string kickkey;
-<<<<<<< HEAD
+    [SerializeField] private string projectile;
     [SerializeField] private string grabkey;
     [SerializeField] private string parrykey;
     [SerializeField] private string dashkey;
-=======
-    [SerializeField] private string projectile;
->>>>>>> origin/projectile
     public bool isgrounded;
     
 
@@ -93,39 +90,22 @@ public class test : MonoBehaviour {
             }
 
             if (Input.GetKeyDown(attackkey)){
-                if (isgrounded){
-                    rb.linearVelocityX = 0;
-                }
                 anim.SetTrigger("attack");
             }
             if (Input.GetKeyDown(kickkey)){
-                if (isgrounded){
-                    rb.linearVelocityX = 0;
-                }
                 anim.SetTrigger("kick");
             }
-<<<<<<< HEAD
             if (Input.GetKeyDown(grabkey)){
-                if (isgrounded){
-                    rb.linearVelocityX = 0;
-                }
                 anim.SetTrigger("grab");
             }
             if (Input.GetKeyDown(parrykey)){
-                if (isgrounded){
-                    rb.linearVelocityX = 0;
-                }
                 anim.SetTrigger("parry");
                 StartCoroutine(parrybuffer());
             }
-            
-=======
             if (Input.GetKeyDown(projectile))
             {
                 Instantiate(projectileprefab,GetComponent<Transform>());
             }
-
->>>>>>> origin/projectile
 
             
 
