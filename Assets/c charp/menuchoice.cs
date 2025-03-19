@@ -71,6 +71,9 @@ public class ButtonNavigator : MonoBehaviour
             {
                 SelectCharacter(currentIndex1, player1NameText, 1);
                 isPlayer1Selected = true;
+
+                // Sauvegarder le personnage choisi pour le joueur 1 dans PlayerPrefs
+                PlayerPrefs.SetString("Player1Character", buttons[currentIndex1].GetComponentInChildren<TMP_Text>().text);
             }
         }
 
@@ -90,6 +93,9 @@ public class ButtonNavigator : MonoBehaviour
             {
                 SelectCharacter(currentIndex2, player2NameText, 2);
                 isPlayer2Selected = true;
+
+                // Sauvegarder le personnage choisi pour le joueur 2 dans PlayerPrefs
+                PlayerPrefs.SetString("Player2Character", buttons[currentIndex2].GetComponentInChildren<TMP_Text>().text);
             }
         }
 
@@ -150,9 +156,6 @@ public class ButtonNavigator : MonoBehaviour
         
         // Mettre à jour le texte pour afficher le nom du personnage sélectionné
         UpdateCharacterName(index, playerText);
-
-        // Enregistrer le personnage choisi dans le GameManager ou keymanager si nécessaire
-        keyManager.SavePlayerControls(); // Exemple d'utilisation pour sauvegarder les choix si nécessaire
     }
 
     // Fonction pour mettre à jour le nom du personnage dans le texte
