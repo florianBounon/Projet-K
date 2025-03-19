@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Hitbox : MonoBehaviour
 {
 
-    [SerializeField] private string enemytag;
+    [SerializeField] public string enemytag;
     [SerializeField] private string parrytag;
     [SerializeField] private int deg;
     [SerializeField] private int hitstunframes;
@@ -16,10 +16,11 @@ public class Hitbox : MonoBehaviour
     [SerializeField] private float HorizKB;
     [SerializeField] private float VertiKB;
     [SerializeField] private BoxCollider2D hitbox;
-    [SerializeField] private GameObject Combo;
+    [SerializeField] public GameObject Combo;
+    [SerializeField] public GameObject Rooted;
 
     private void OnTriggerEnter2D(Collider2D other) {
-        transform.root.GetComponent<Animator>().SetBool("Gatling",true);
+        Rooted.GetComponent<Animator>().SetBool("Gatling",true);
         if (other.gameObject.tag == enemytag){
             if (transform.tag == "grab" && other.transform.root.GetComponent<test>().isgrounded){
                 other.transform.root.GetComponent<Animator>().ResetTrigger("endhitstun");
@@ -28,22 +29,22 @@ public class Hitbox : MonoBehaviour
                 other.transform.root.GetComponent<hitstun>().Timer += hitlagsec;
                 StopAllCoroutines();
                 StartCoroutine(hitlag(hitlagsec,gameObject, false, false));
-                transform.root.GetComponent<Animator>().SetTrigger("kick");
+                Rooted.GetComponent<Animator>().SetTrigger("kick");
             }
-            if (other.transform.root.GetComponent<test>().isbackward && transform.root.GetComponent<test>().hitagain == true){
+            if (other.transform.root.GetComponent<test>().isbackward && (Rooted.GetComponent<test>().hitagain == true || gameObject.tag == "Projectile")){
                 other.transform.root.GetComponent<Animator>().ResetTrigger("endhitstun");
                 other.transform.root.GetComponent<Animator>().Play("block");
-                transform.root.GetComponent<test>().hitagain = false;
+                Rooted.GetComponent<test>().hitagain = false;
                 other.transform.root.GetComponent<hitstun>().basehitstun = blockstunframes;
                 other.transform.root.GetComponent<hitstun>().Timer += blocklagsec;
                 StopAllCoroutines();
                 StartCoroutine(hitlag(blocklagsec,other.gameObject,true, false));
             }
-            else if (transform.root.GetComponent<test>().hitagain || gameObject.tag == "Projectile"){
+            else if (Rooted.GetComponent<test>().hitagain || gameObject.tag == "Projectile"){
                 Combo.GetComponent<ComboCounter>().AddCombo();
                 GameObject.FindWithTag("MainCamera").GetComponent<Animator>().SetTrigger("shake");
                 other.transform.root.GetComponent<Animator>().ResetTrigger("endhitstun");
-                transform.root.GetComponent<test>().hitagain = false;
+                Rooted.GetComponent<test>().hitagain = false;
                 other.transform.root.GetComponent<health>().takedmg(deg);
                 other.transform.root.GetComponent<Animator>().SetTrigger("ishit");
                 other.transform.root.GetComponent<hitstun>().basehitstun = hitstunframes;
@@ -57,31 +58,30 @@ public class Hitbox : MonoBehaviour
         else if (other.gameObject.tag == parrytag){
             other.transform.root.GetComponent<Animator>().SetTrigger("endhitstun");
             other.transform.root.Find("ParryBurst").gameObject.GetComponent<ParticleSystem>().Play();
-            transform.root.GetComponent<Animator>().ResetTrigger("endhitstun");
-            transform.root.GetComponent<Animator>().SetTrigger("ishit");
-            transform.root.GetComponent<hitstun>().basehitstun = 120;
-            transform.root.GetComponent<hitstun>().Timer += hitlagsec;
-            StopAllCoroutines();
-            StartCoroutine(hitlag(hitlagsec,gameObject, false, true));
+            Rooted.GetComponent<Animator>().ResetTrigger("endhitstun");
+            Rooted.GetComponent<Animator>().SetTrigger("ishit");
+            Rooted.GetComponent<hitstun>().basehitstun = 120;
+            Rooted.GetComponent<hitstun>().Timer += hitlagsec;
+            StartCoroutine(hitlag(hitlagsec,other.gameObject, false, true));
         }
     }
     private IEnumerator hitlag(float duration,GameObject enemy, bool blocked, bool parried){
 
-        Vector2 Momentum = transform.root.GetComponent<Rigidbody2D>().linearVelocity;
-        transform.root.GetComponent<Animator>().speed = 0;
+        Vector2 Momentum = Rooted.GetComponent<Rigidbody2D>().linearVelocity;
+        Rooted.GetComponent<Animator>().speed = 0;
         enemy.transform.root.GetComponent<Animator>().speed = 0;
         enemy.transform.root.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezePositionX;
-        transform.root.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezePositionX;
+        Rooted.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezePositionX;
 
         yield return new WaitForSeconds(duration);
 
         enemy.transform.root.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
-        transform.root.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
-        transform.root.GetComponent<Animator>().speed = 1;
+        Rooted.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
+        Rooted.GetComponent<Animator>().speed = 1;
         enemy.transform.root.GetComponent<Animator>().speed = 1;
-        transform.root.GetComponent<Rigidbody2D>().linearVelocity = Momentum;
+        Rooted.GetComponent<Rigidbody2D>().linearVelocity = Momentum;
         if(!parried){
-            if(transform.root.GetComponent<test>().facingleft){
+            if(Rooted.GetComponent<test>().facingleft){
                 knockback(-HorizKB,VertiKB,enemy.gameObject);
                 if (blocked){
                     knockback(HorizKB,0,gameObject);
@@ -96,7 +96,10 @@ public class Hitbox : MonoBehaviour
             enemy.transform.root.GetComponent<hitstun>().hitbyattack = true;
         }
         else{
-            transform.root.GetComponent<hitstun>().hitbyattack = true;
+            Rooted.GetComponent<hitstun>().hitbyattack = true;
+        }
+        if (gameObject.tag == "Projectile"){
+            Destroy(gameObject);
         }
     }
 

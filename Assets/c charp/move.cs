@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class test : MonoBehaviour {
@@ -24,6 +25,7 @@ public class test : MonoBehaviour {
     [SerializeField] private float dashtime;
     [SerializeField] private float groundcheckradius;
     [SerializeField] private Transform enemyposition;
+    [SerializeField] private string enemytag;
 
 
 
@@ -39,12 +41,14 @@ public class test : MonoBehaviour {
     public bool isbackward = false;
     public bool hitagain = false;
     public bool doublejumpable = false;
+    public bool projectilable = true;
     private bool dashspeeding;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundcheck;
     [SerializeField] private LayerMask collisionlayers;
     [SerializeField] private GameObject projectileprefab;
+    [SerializeField] private GameObject ComboCount;
     public bool facingleft = false;
     private int rota;
     Animator anim;
@@ -67,6 +71,7 @@ public class test : MonoBehaviour {
     }
     void Update()
     {   
+        Debug.Log(anim.speed);
         isgrounded = Physics2D.OverlapCircle(groundcheck.position, groundcheckradius, collisionlayers);
         if(!isdash){
             if (!isgrounded){
@@ -102,9 +107,10 @@ public class test : MonoBehaviour {
                 anim.SetTrigger("parry");
                 StartCoroutine(parrybuffer());
             }
-            if (Input.GetKeyDown(projectile))
+            if (Input.GetKeyDown(projectile) && projectilable)
             {
-                Instantiate(projectileprefab,GetComponent<Transform>());
+                anim.SetTrigger("ProjoK");
+                StartCoroutine(projobuffer());
             }
 
             
@@ -242,6 +248,10 @@ public class test : MonoBehaviour {
         yield return new WaitForSeconds(0.2f);
         anim.ResetTrigger("parry");
     }
+    private IEnumerator projobuffer(){
+        yield return new WaitForSeconds(0.2f);
+        anim.ResetTrigger("ProjoK");
+    }
 
     private IEnumerator dashing(){
         lastdash = Time.time;
@@ -263,6 +273,27 @@ public class test : MonoBehaviour {
     private IEnumerator dashcd(){
         yield return new WaitForSeconds(0.3f);
         dashable = true;
+    }
+
+    private IEnumerator projocd(){
+        yield return new WaitForSeconds(1);
+        projectilable = true;
+    }
+
+    private void ThrowK(){
+        projectilable = false;
+        GameObject ProjectileClone = Instantiate(projectileprefab,GetComponent<Transform>());
+        ProjectileClone.GetComponent<Hitbox>().Combo = ComboCount;
+        ProjectileClone.GetComponent<Hitbox>().Rooted = gameObject;
+        ProjectileClone.GetComponent<Hitbox>().enemytag = enemytag;
+        if (facingleft){
+            ProjectileClone.GetComponent<Projectile>().direction = Vector2.left;
+        }
+        else{
+            ProjectileClone.GetComponent<Projectile>().direction = Vector2.right;
+        }
+        ProjectileClone.transform.SetParent(null);
+        StartCoroutine(projocd());
     }
 
 }

@@ -1412,7 +1412,6 @@ GameObject:
   - component: {fileID: 890940552}
   - component: {fileID: 890940556}
   - component: {fileID: 890940555}
-  - component: {fileID: 890940557}
   m_Layer: 0
   m_Name: CollisionGround
   m_TagString: Untagged
@@ -1628,29 +1627,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.19022608, y: 3.211932}
   m_EdgeRadius: 0
---- !u!114 &890940557
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 922784357986446917, guid: 4b2386705832e0149b2508d1e61fae11, type: 3}
-  m_PrefabInstance: {fileID: 6532214750000018344}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 890940551}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91b15186b0c9a0a479a2db09c5be10ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemytag: 
-  parrytag: 
-  deg: 0
-  hitstunframes: 0
-  blockstunframes: 0
-  hitlagsec: 0
-  blocklagsec: 0
-  HorizKB: 0
-  VertiKB: 0
-  hitbox: {fileID: 0}
-  Combo: {fileID: 0}
 --- !u!1 &940864087
 GameObject:
   m_ObjectHideFlags: 0
@@ -1846,6 +1822,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 300322358}
     - target: {fileID: 1225390664803377864, guid: 8065576f27f6148429c1bc9fe9a34acb, type: 3}
+      propertyPath: Rooted
+      value: 
+      objectReference: {fileID: 183276635}
+    - target: {fileID: 1225390664803377864, guid: 8065576f27f6148429c1bc9fe9a34acb, type: 3}
       propertyPath: enemytag
       value: Player1
       objectReference: {fileID: 0}
@@ -1898,6 +1878,10 @@ PrefabInstance:
       value: j
       objectReference: {fileID: 0}
     - target: {fileID: 4207844464786383125, guid: 8065576f27f6148429c1bc9fe9a34acb, type: 3}
+      propertyPath: enemytag
+      value: Player1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4207844464786383125, guid: 8065576f27f6148429c1bc9fe9a34acb, type: 3}
       propertyPath: parrykey
       value: p
       objectReference: {fileID: 0}
@@ -1906,9 +1890,21 @@ PrefabInstance:
       value: i
       objectReference: {fileID: 0}
     - target: {fileID: 4207844464786383125, guid: 8065576f27f6148429c1bc9fe9a34acb, type: 3}
+      propertyPath: ComboCount
+      value: 
+      objectReference: {fileID: 300322358}
+    - target: {fileID: 4207844464786383125, guid: 8065576f27f6148429c1bc9fe9a34acb, type: 3}
+      propertyPath: projectile
+      value: b
+      objectReference: {fileID: 0}
+    - target: {fileID: 4207844464786383125, guid: 8065576f27f6148429c1bc9fe9a34acb, type: 3}
       propertyPath: enemyposition
       value: 
       objectReference: {fileID: 7673488465402518187}
+    - target: {fileID: 4207844464786383125, guid: 8065576f27f6148429c1bc9fe9a34acb, type: 3}
+      propertyPath: projectileprefab
+      value: 
+      objectReference: {fileID: 4237410102269931231, guid: e7eae5a35d2674c7ea86aaadd66f83e6, type: 3}
     - target: {fileID: 4746408357416718737, guid: 8065576f27f6148429c1bc9fe9a34acb, type: 3}
       propertyPath: m_Name
       value: williamK 5
@@ -1917,6 +1913,10 @@ PrefabInstance:
       propertyPath: Combo
       value: 
       objectReference: {fileID: 300322358}
+    - target: {fileID: 4815884710899970630, guid: 8065576f27f6148429c1bc9fe9a34acb, type: 3}
+      propertyPath: Rooted
+      value: 
+      objectReference: {fileID: 183276635}
     - target: {fileID: 4815884710899970630, guid: 8065576f27f6148429c1bc9fe9a34acb, type: 3}
       propertyPath: enemytag
       value: Player1
@@ -1985,6 +1985,10 @@ PrefabInstance:
       propertyPath: Combo
       value: 
       objectReference: {fileID: 300322358}
+    - target: {fileID: 8512313071464273330, guid: 8065576f27f6148429c1bc9fe9a34acb, type: 3}
+      propertyPath: Rooted
+      value: 
+      objectReference: {fileID: 183276635}
     - target: {fileID: 8512313071464273330, guid: 8065576f27f6148429c1bc9fe9a34acb, type: 3}
       propertyPath: enemytag
       value: Player1
@@ -2814,6 +2818,10 @@ PrefabInstance:
       propertyPath: Combo
       value: 
       objectReference: {fileID: 300322358}
+    - target: {fileID: 1225390664803377864, guid: 8065576f27f6148429c1bc9fe9a34acb, type: 3}
+      propertyPath: Rooted
+      value: 
+      objectReference: {fileID: 7530422334544478336}
     - target: {fileID: 1387336133631651140, guid: 8065576f27f6148429c1bc9fe9a34acb, type: 3}
       propertyPath: m_Layer
       value: 12
@@ -2839,9 +2847,25 @@ PrefabInstance:
       value: r
       objectReference: {fileID: 0}
     - target: {fileID: 4207844464786383125, guid: 8065576f27f6148429c1bc9fe9a34acb, type: 3}
+      propertyPath: enemytag
+      value: Player2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4207844464786383125, guid: 8065576f27f6148429c1bc9fe9a34acb, type: 3}
+      propertyPath: ComboCount
+      value: 
+      objectReference: {fileID: 300322358}
+    - target: {fileID: 4207844464786383125, guid: 8065576f27f6148429c1bc9fe9a34acb, type: 3}
+      propertyPath: projectile
+      value: v
+      objectReference: {fileID: 0}
+    - target: {fileID: 4207844464786383125, guid: 8065576f27f6148429c1bc9fe9a34acb, type: 3}
       propertyPath: enemyposition
       value: 
       objectReference: {fileID: 183276643}
+    - target: {fileID: 4207844464786383125, guid: 8065576f27f6148429c1bc9fe9a34acb, type: 3}
+      propertyPath: projectileprefab
+      value: 
+      objectReference: {fileID: 4237410102269931231, guid: e7eae5a35d2674c7ea86aaadd66f83e6, type: 3}
     - target: {fileID: 4746408357416718737, guid: 8065576f27f6148429c1bc9fe9a34acb, type: 3}
       propertyPath: m_Name
       value: williamK
@@ -2850,6 +2874,10 @@ PrefabInstance:
       propertyPath: Combo
       value: 
       objectReference: {fileID: 300322358}
+    - target: {fileID: 4815884710899970630, guid: 8065576f27f6148429c1bc9fe9a34acb, type: 3}
+      propertyPath: Rooted
+      value: 
+      objectReference: {fileID: 7530422334544478336}
     - target: {fileID: 5942729511422193998, guid: 8065576f27f6148429c1bc9fe9a34acb, type: 3}
       propertyPath: healthbar
       value: 
@@ -2898,6 +2926,10 @@ PrefabInstance:
       propertyPath: Combo
       value: 
       objectReference: {fileID: 300322358}
+    - target: {fileID: 8512313071464273330, guid: 8065576f27f6148429c1bc9fe9a34acb, type: 3}
+      propertyPath: Rooted
+      value: 
+      objectReference: {fileID: 7530422334544478336}
     - target: {fileID: 8512313071464273330, guid: 8065576f27f6148429c1bc9fe9a34acb, type: 3}
       propertyPath: hitlagsec
       value: 0.25
@@ -2959,7 +2991,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CollisionGround
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

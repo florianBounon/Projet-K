@@ -5,13 +5,14 @@ public class firePoint : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-    
-       animator.transform.GetComponent<test>().hitagain = true;
-       animator.transform.GetComponent<test>().isbackward = true;
-       animator.SetBool("Gatling",false);
-       if (animator.transform.GetComponent<test>().isgrounded){
-            animator.transform.GetComponent<Rigidbody2D>().linearVelocityX = 0;
-       }
+        if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "attack" || animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "AirKick" || animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "AirPunch" || animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Kick"){
+            animator.transform.GetComponent<test>().hitagain = true;
+        }
+        animator.transform.GetComponent<test>().isbackward = true;
+        animator.SetBool("Gatling",false);
+        if (animator.transform.GetComponent<test>().isgrounded){
+                animator.transform.GetComponent<Rigidbody2D>().linearVelocityX = 0;
+        }
 
 
     }
