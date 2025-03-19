@@ -8,6 +8,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ArenaKK.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/character_select.unity
+    guid: 4669a9a3f7a8f5c4c90203d1370a7f0a
+  - enabled: 1
+    path: Assets/Scenes/arene1.unity
+    guid: ba7af463a89d2724e8d138264173d97e
+  - enabled: 1
+    path: Assets/Scenes/select_map.unity
+    guid: d805743e314660948b1e4deeb8757873
+  - enabled: 1
+    path: Assets/Scenes/entrainement.unity
+    guid: 4770373f0f75f9043ba19c9b1e0d5986
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

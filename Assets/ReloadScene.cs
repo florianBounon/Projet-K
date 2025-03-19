@@ -9,7 +9,7 @@ public class ReloadScene : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown("y")){
-            SceneManager.LoadScene("ArenaK");
+            SceneManager.LoadScene("ArenaKK");
         }
     }
 }

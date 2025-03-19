@@ -60,7 +60,9 @@ public class Hitbox : MonoBehaviour
             other.transform.root.Find("ParryBurst").gameObject.GetComponent<ParticleSystem>().Play();
             Rooted.GetComponent<Animator>().ResetTrigger("endhitstun");
             Rooted.GetComponent<Animator>().SetTrigger("ishit");
-            Rooted.GetComponent<hitstun>().basehitstun = 120;
+            if (gameObject.tag != "Projectile"){
+                Rooted.GetComponent<hitstun>().basehitstun = 120;
+            }
             Rooted.GetComponent<hitstun>().Timer += hitlagsec;
             StartCoroutine(hitlag(hitlagsec,other.gameObject, false, true));
         }
@@ -94,13 +96,17 @@ public class Hitbox : MonoBehaviour
                 }
             }
             enemy.transform.root.GetComponent<hitstun>().hitbyattack = true;
+            if (gameObject.tag == "Projectile"){
+                Destroy(gameObject);
+            }
         }
         else{
             Rooted.GetComponent<hitstun>().hitbyattack = true;
+            /*if (gameObject.tag == "Projectile"){
+                gameObject.GetComponent<Rigidbody2D>.linearVelocityX *=-1;
+            }*/
         }
-        if (gameObject.tag == "Projectile"){
-            Destroy(gameObject);
-        }
+        
     }
 
     private void knockback(float xknockback,float yknockback,GameObject enemy){

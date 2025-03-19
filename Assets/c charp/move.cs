@@ -5,18 +5,17 @@ using UnityEngine;
 public class test : MonoBehaviour {
     [Header("Attributes")]
 
-    [SerializeField] private string droite ;
-    [SerializeField] private string gauche ;
-    [SerializeField] private string jump ;
-    [SerializeField] private string crouch ;
-    [SerializeField] private string attackkey;
-    [SerializeField] private string kickkey;
-    [SerializeField] private string projectile;
-    [SerializeField] private string grabkey;
-    [SerializeField] private string parrykey;
-    [SerializeField] private string dashkey;
+    [SerializeField] public string droite ;
+    [SerializeField] public string gauche ;
+    [SerializeField] public string jump ;
+    [SerializeField] public string crouch ;
+    [SerializeField] public string attackkey;
+    [SerializeField] public string kickkey;
+    [SerializeField] public string projectile;
+    [SerializeField] public string grabkey;
+    [SerializeField] public string parrykey;
+    [SerializeField] public string dashkey;
     public bool isgrounded;
-    
 
     [SerializeField] private float speed  ;
     [SerializeField] private float jetforce  ;
@@ -24,7 +23,7 @@ public class test : MonoBehaviour {
     [SerializeField] private float dashforce;
     [SerializeField] private float dashtime;
     [SerializeField] private float groundcheckradius;
-    [SerializeField] private Transform enemyposition;
+    [SerializeField] public Transform enemyposition;
     [SerializeField] private string enemytag;
 
 
@@ -71,7 +70,6 @@ public class test : MonoBehaviour {
     }
     void Update()
     {   
-        Debug.Log(anim.speed);
         isgrounded = Physics2D.OverlapCircle(groundcheck.position, groundcheckradius, collisionlayers);
         if(!isdash){
             if (!isgrounded){
@@ -102,6 +100,7 @@ public class test : MonoBehaviour {
             }
             if (Input.GetKeyDown(grabkey)){
                 anim.SetTrigger("grab");
+                StartCoroutine(grabbuffer());
             }
             if (Input.GetKeyDown(parrykey)){
                 anim.SetTrigger("parry");
@@ -242,6 +241,11 @@ public class test : MonoBehaviour {
     private IEnumerator jumpbuffer(){
         yield return new WaitForSeconds(0.2f);
         isjump = false;
+    }
+
+    private IEnumerator grabbuffer(){
+        yield return new WaitForSeconds(0.2f);
+        anim.ResetTrigger("grab");
     }
 
     private IEnumerator parrybuffer(){
