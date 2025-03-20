@@ -60,7 +60,7 @@ public class Hitbox : MonoBehaviour
             other.transform.root.GetComponent<Animator>().SetTrigger("endhitstun");
             other.transform.root.Find("ParryBurst").gameObject.GetComponent<ParticleSystem>().Play();
             if (gameObject.tag != "Projectile"){
-                Rooted.GetComponent<hitstun>().basehitstun = 120;
+                Rooted.GetComponent<hitstun>().basehitstun = 90;
             }
             else{
                 var temptag = enemytag;
@@ -82,7 +82,10 @@ public class Hitbox : MonoBehaviour
             StartCoroutine(hitlag(hitlagsec,other.gameObject, false, true));
         }
     }
+
     private IEnumerator hitlag(float duration,GameObject enemy, bool blocked, bool parried){
+
+        enemy.transform.root.GetComponent<Animator>().ResetTrigger("endhitstun");
 
         Vector2 Momentum = Rooted.GetComponent<Rigidbody2D>().linearVelocity;
         Rooted.GetComponent<Animator>().speed = 0;
@@ -116,6 +119,7 @@ public class Hitbox : MonoBehaviour
             }
         }
         else{
+            enemy.transform.root.GetComponent<Animator>().SetTrigger("endhitstun");
             Rooted.GetComponent<hitstun>().hitbyattack = true;
             /*if (gameObject.tag == "Projectile"){
                 gameObject.GetComponent<Rigidbody2D>.linearVelocityX *=-1;

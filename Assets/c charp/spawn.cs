@@ -168,8 +168,7 @@ public class spawn : MonoBehaviour
     // Fonction récursive pour assigner le tag à tous les composants du playerInstance
     void AssignTagToAllComponentsRecursively(GameObject playerInstance, string tag, string enemyTag)
     {
-        // Assigner le tag au GameObject principal
-        playerInstance.tag = tag;
+        
 
         // Récursion pour assigner le tag à tous les enfants et sous-enfants
         AssignTagToChildren(playerInstance.transform, tag, enemyTag);

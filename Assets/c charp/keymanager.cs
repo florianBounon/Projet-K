@@ -53,12 +53,12 @@ public class keymanager : MonoBehaviour
             player1Controls.gauche = PlayerPrefs.GetString("Player1LeftKey", "a");
             player1Controls.jump = PlayerPrefs.GetString("Player1JumpKey", "w");
             player1Controls.crouch = PlayerPrefs.GetString("Player1CrouchKey", "s");
-            player1Controls.attackkey = PlayerPrefs.GetString("Player1AttackKey", "e");
-            player1Controls.kickkey = PlayerPrefs.GetString("Player1KickKey", "f");
+            player1Controls.attackkey = PlayerPrefs.GetString("Player1AttackKey", "h");
+            player1Controls.kickkey = PlayerPrefs.GetString("Player1KickKey", "j");
 
-            player1Controls.projectile = PlayerPrefs.GetString("Player1ProjectileKey", "v");
-            player1Controls.grabkey = PlayerPrefs.GetString("Player1GrabKey", "r");
-            player1Controls.parrykey = PlayerPrefs.GetString("Player1ParryKey", "q");
+            player1Controls.projectile = PlayerPrefs.GetString("Player1ProjectileKey", "k");
+            player1Controls.grabkey = PlayerPrefs.GetString("Player1GrabKey", "y");
+            player1Controls.parrykey = PlayerPrefs.GetString("Player1ParryKey", "u");
             player1Controls.dashkey = PlayerPrefs.GetString("Player1DashKey", "left shift");
         }
 
@@ -74,16 +74,16 @@ public class keymanager : MonoBehaviour
         }
         else
         {
-            player2Controls.droite = PlayerPrefs.GetString("Player2RightKey", ";");
-            player2Controls.gauche = PlayerPrefs.GetString("Player2LeftKey", "k");
-            player2Controls.jump = PlayerPrefs.GetString("Player2JumpKey", "o");
-            player2Controls.crouch = PlayerPrefs.GetString("Player2CrouchKey", "l");
-            player2Controls.attackkey = PlayerPrefs.GetString("Player2AttackKey", "i");
-            player2Controls.kickkey = PlayerPrefs.GetString("Player2KickKey", "j");
+            player2Controls.droite = PlayerPrefs.GetString("Player2RightKey", "right");
+            player2Controls.gauche = PlayerPrefs.GetString("Player2LeftKey", "left");
+            player2Controls.jump = PlayerPrefs.GetString("Player2JumpKey", "up");
+            player2Controls.crouch = PlayerPrefs.GetString("Player2CrouchKey", "down");
+            player2Controls.attackkey = PlayerPrefs.GetString("Player2AttackKey", "[1]");
+            player2Controls.kickkey = PlayerPrefs.GetString("Player2KickKey", "[2]");
 
-            player2Controls.projectile = PlayerPrefs.GetString("Player2ProjectileKey", "n");
-            player2Controls.grabkey = PlayerPrefs.GetString("Player2GrabKey", "u");
-            player2Controls.parrykey = PlayerPrefs.GetString("Player2ParryKey", "p");
+            player2Controls.projectile = PlayerPrefs.GetString("Player2ProjectileKey", "[3]");
+            player2Controls.grabkey = PlayerPrefs.GetString("Player2GrabKey", "[4]");
+            player2Controls.parrykey = PlayerPrefs.GetString("Player2ParryKey", "[5]");
             player2Controls.dashkey = PlayerPrefs.GetString("Player2DashKey", "right shift");
         }
     }

@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Grab
+  m_Name: CrouchPunch
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -31,7 +31,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.23333333
+        time: 0.1
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -40,7 +40,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.38333333
+        time: 0.2
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -52,7 +52,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: Hitboxes/GrabHitbox
+    path: Hitboxes/MainHitbox
     classID: 61
     script: {fileID: 0}
     flags: 0
@@ -70,8 +70,8 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.23333333
-        value: 1.1892664
+        time: 0.1
+        value: 1.5623324
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -82,7 +82,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Offset.x
-    path: Hitboxes/GrabHitbox
+    path: Hitboxes/MainHitbox
     classID: 61
     script: {fileID: 0}
     flags: 0
@@ -100,8 +100,8 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.23333333
-        value: 1.6757808
+        time: 0.1
+        value: 2.878735
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -112,7 +112,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Size.x
-    path: Hitboxes/GrabHitbox
+    path: Hitboxes/MainHitbox
     classID: 61
     script: {fileID: 0}
     flags: 0
@@ -130,8 +130,8 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.23333333
-        value: -0.33254457
+        time: 0.1
+        value: -0.31375727
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -142,7 +142,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Offset.y
-    path: Hitboxes/GrabHitbox
+    path: Hitboxes/MainHitbox
     classID: 61
     script: {fileID: 0}
     flags: 0
@@ -160,8 +160,8 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.23333333
-        value: 1.2737291
+        time: 0.1
+        value: 0.8670085
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -172,7 +172,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Size.y
-    path: Hitboxes/GrabHitbox
+    path: Hitboxes/MainHitbox
     classID: 61
     script: {fileID: 0}
     flags: 0
@@ -180,13 +180,15 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 1222082980452245397, guid: a0410a4abb6c73f43b0dc5dce2a7764d, type: 3}
-    - time: 0.21666667
-      value: {fileID: -6212569579297741848, guid: a0410a4abb6c73f43b0dc5dce2a7764d, type: 3}
-    - time: 0.38333333
-      value: {fileID: -7667103401426610780, guid: a0410a4abb6c73f43b0dc5dce2a7764d, type: 3}
-    - time: 0.6333333
-      value: {fileID: -7667103401426610780, guid: a0410a4abb6c73f43b0dc5dce2a7764d, type: 3}
+      value: {fileID: -3276088321594811653, guid: c7ab4cf32a32d08428d30a046207007e, type: 3}
+    - time: 0.06666667
+      value: {fileID: -1337851062054628269, guid: c7ab4cf32a32d08428d30a046207007e, type: 3}
+    - time: 0.1
+      value: {fileID: -2349016472725133042, guid: c7ab4cf32a32d08428d30a046207007e, type: 3}
+    - time: 0.2
+      value: {fileID: -3276088321594811653, guid: c7ab4cf32a32d08428d30a046207007e, type: 3}
+    - time: 0.31666666
+      value: {fileID: -3276088321594811653, guid: c7ab4cf32a32d08428d30a046207007e, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -200,7 +202,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 1948250831
+      path: 3795152243
       attribute: 3305885265
       script: {fileID: 0}
       typeID: 61
@@ -209,7 +211,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 1948250831
+      path: 3795152243
       attribute: 413499720
       script: {fileID: 0}
       typeID: 61
@@ -218,7 +220,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 1948250831
+      path: 3795152243
       attribute: 4197328169
       script: {fileID: 0}
       typeID: 61
@@ -227,7 +229,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 1948250831
+      path: 3795152243
       attribute: 1872933342
       script: {fileID: 0}
       typeID: 61
@@ -236,7 +238,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 1948250831
+      path: 3795152243
       attribute: 2368279999
       script: {fileID: 0}
       typeID: 61
@@ -254,16 +256,17 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 1222082980452245397, guid: a0410a4abb6c73f43b0dc5dce2a7764d, type: 3}
-    - {fileID: -6212569579297741848, guid: a0410a4abb6c73f43b0dc5dce2a7764d, type: 3}
-    - {fileID: -7667103401426610780, guid: a0410a4abb6c73f43b0dc5dce2a7764d, type: 3}
-    - {fileID: -7667103401426610780, guid: a0410a4abb6c73f43b0dc5dce2a7764d, type: 3}
+    - {fileID: -3276088321594811653, guid: c7ab4cf32a32d08428d30a046207007e, type: 3}
+    - {fileID: -1337851062054628269, guid: c7ab4cf32a32d08428d30a046207007e, type: 3}
+    - {fileID: -2349016472725133042, guid: c7ab4cf32a32d08428d30a046207007e, type: 3}
+    - {fileID: -3276088321594811653, guid: c7ab4cf32a32d08428d30a046207007e, type: 3}
+    - {fileID: -3276088321594811653, guid: c7ab4cf32a32d08428d30a046207007e, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.65
+    m_StopTime: 0.33333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -293,7 +296,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.23333333
+        time: 0.1
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -302,7 +305,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.38333333
+        time: 0.2
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -314,7 +317,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: Hitboxes/GrabHitbox
+    path: Hitboxes/MainHitbox
     classID: 61
     script: {fileID: 0}
     flags: 0
@@ -332,8 +335,8 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.23333333
-        value: 1.1892664
+        time: 0.1
+        value: 1.5623324
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -344,7 +347,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Offset.x
-    path: Hitboxes/GrabHitbox
+    path: Hitboxes/MainHitbox
     classID: 61
     script: {fileID: 0}
     flags: 0
@@ -362,8 +365,8 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.23333333
-        value: 1.6757808
+        time: 0.1
+        value: 2.878735
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -374,7 +377,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Size.x
-    path: Hitboxes/GrabHitbox
+    path: Hitboxes/MainHitbox
     classID: 61
     script: {fileID: 0}
     flags: 0
@@ -392,8 +395,8 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.23333333
-        value: -0.33254457
+        time: 0.1
+        value: -0.31375727
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -404,7 +407,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Offset.y
-    path: Hitboxes/GrabHitbox
+    path: Hitboxes/MainHitbox
     classID: 61
     script: {fileID: 0}
     flags: 0
@@ -422,8 +425,8 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.23333333
-        value: 1.2737291
+        time: 0.1
+        value: 0.8670085
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -434,7 +437,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Size.y
-    path: Hitboxes/GrabHitbox
+    path: Hitboxes/MainHitbox
     classID: 61
     script: {fileID: 0}
     flags: 0

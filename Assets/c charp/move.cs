@@ -57,7 +57,7 @@ public class test : MonoBehaviour {
         anim = GetComponent<Animator> ();
     }
     private void LateUpdate() {
-        if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name != "attack" && anim.GetCurrentAnimatorClipInfo(0)[0].clip.name != "AirKick" && anim.GetCurrentAnimatorClipInfo(0)[0].clip.name != "AirPunch" && anim.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Kick"){
+        if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name != "attack" && anim.GetCurrentAnimatorClipInfo(0)[0].clip.name != "AirKick" && anim.GetCurrentAnimatorClipInfo(0)[0].clip.name != "AirPunch" && anim.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Kick" && anim.GetCurrentAnimatorClipInfo(0)[0].clip.name != "CrouchPunch" ){
             if (transform.position.x <= enemyposition.position.x){
                 rota = 0;
                 facingleft = false;
@@ -86,6 +86,9 @@ public class test : MonoBehaviour {
             }
             else {
                 anim.SetBool("iscrouching",false);
+            }
+            if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "crouch"){
+                rb.linearVelocityX = 0;
             }
 
             if (Input.GetKeyDown(jump)){
