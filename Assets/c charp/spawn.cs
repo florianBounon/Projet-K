@@ -138,6 +138,8 @@ public class spawn : MonoBehaviour
 
                 player2Instance.GetComponent<SpriteRenderer>().sortingOrder = 7;
 
+                player2Instance.GetComponent<SpriteRenderer>().color = Color.red;
+
                 // Assigner le tag et la position de l'ennemi
                 AssignTagToAllComponentsRecursively(playerInstance, "Player2", "Player1");
             }
